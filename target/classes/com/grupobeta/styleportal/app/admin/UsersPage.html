@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Style Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/png"
+	href="images/icon/favicon.ico">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/themify-icons.css">
+<link rel="stylesheet" href="css/metisMenu.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/slicknav.min.css">
+<!-- others css -->
+<link rel="stylesheet" href="css/typography.css">
+<link rel="stylesheet" href="css/default-css.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/custom.css">
+<!-- modernizr css -->
+<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+	<wicket:extend>
+		<wicket:enclosure child="formSearch">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<form wicket:id="formSearch">
+								<div class="form-group">
+									<div class="col-md-1">
+										<label for="user"><wicket:message key="user"></wicket:message></label>
+									</div>
+									<div class="col-md-3">
+										<input class="form-control form-control-sm input-rounded"
+											type="text" id="user" wicket:id="txtSearch" />
+									</div>
+									<div class="col-md-8">
+										<button class="btn btn-rounded btn-primary mb-3" type="submit" wicket:id="submit2"
+											id="submit2" ><wicket:message key="search"></wicket:message></button>
+										
+									</div>
+								</div>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</wicket:enclosure>
+
+		<wicket:enclosure child="table">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="header-title"></h4>
+							<div class="single-table">
+								<div class="table-responsive">
+									<table class="table text-center">
+										<thead class="text-upppercase table-head">
+											<tr>
+												<th><wicket:message key="userCode"></wicket:message></th>
+												<th><wicket:message key="userName"></wicket:message></th>
+												<th><wicket:message key="email"></wicket:message></th>
+												<th><wicket:message key="status"></wicket:message></th>
+												<th><wicket:message key="department"></wicket:message></th>
+												<th><a href="#" wicket:id="add" title="Add User"> <i
+														class="fas fa-user-plus icons"></i>
+												</a> <span><wicket:message key="actions"></wicket:message></span></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr wicket:id="table">
+												<td wicket:id="codUsuario"></td>
+												<td wicket:id="nombre"></td>
+												<td wicket:id="correoElectronico"></td>
+												<td wicket:id="department"></td>
+												<td><img wicket:id="estado" width="18" height="18" />
+													<a href="#" wicket:id="toggle"> <span
+														wicket:id="toggleLabel"></span>
+												</a></td>
+												<td width="100px"><a href="#" wicket:id="edit"> <i
+														class="fas fa-pencil icons"></i>
+												</a></td>
+											</tr>
+										</tbody>
+										<tfoot>
+											<tr class="text-upppercase table-head">
+												<th wicket:id="navigator" colspan="5">&nbsp;</th>
+												<th><a href="#" wicket:id="add2"> <i
+														class="fas fa-user-plus icons"></i>
+												</a></th>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</wicket:enclosure>
+
+
+		<wicket:enclosure child="form">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<form wicket:id="form" class="form-horizontal form-label-left">
+
+								 <div class="form-group">
+									<label class="col-form-label col-md-3 col-sm-3 col-xs-12"
+										for="codUsuario"><wicket:message key="userCode"></wicket:message>: <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<input class="form-control form-control-sm input-rounded"
+											type="text" id="codUsuario" wicket:id="codUsuario" />
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<label class="col-form-label col-md-3 col-sm-3 col-xs-12"
+										for="nombre"><wicket:message key="userName"></wicket:message>: <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<input class="form-control form-control-sm input-rounded"
+											type="text" id="nombre" wicket:id="nombre" />
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<label class="col-form-label col-md-3 col-sm-3 col-xs-12"
+										for="correoElectronico"><wicket:message key="email"></wicket:message>:</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<input class="form-control form-control-sm input-rounded"
+											type="text" id="correoElectronico"
+											wicket:id="correoElectronico" />
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="col-form-label col-md-3 col-sm-3 col-xs-12"
+										for="department"><wicket:message key="department"></wicket:message>:</label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<input class="form-control form-control-sm input-rounded"
+											type="text" id="department"
+											wicket:id="department" />
+									</div>
+								</div>
+
+								
+								<div class="form-group">
+									<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+										<button wicket:id="submit" type="submit"
+											class="btn btn-rounded btn-primary mb-3">
+											<i class="fas fa-check icon-white"></i> <wicket:message key="submit"></wicket:message>
+										</button>
+
+										<button class="btn btn-rounded mb-3" type="button" 
+											wicket:id="cancel">
+											<i class="fas fa-ban icon-color"></i> <wicket:message key="cancel"></wicket:message>
+										</button>
+									</div>
+								</div>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</wicket:enclosure>
+
+
+
+	</wicket:extend>
+	<!-- jquery latest version -->
+	<script src="js/vendor/jquery-2.2.4.min.js"></script>
+	<!-- bootstrap 4 js -->
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/metisMenu.min.js"></script>
+	<script src="js/jquery.slimscroll.min.js"></script>
+	<script src="js/jquery.slicknav.min.js"></script>
+
+	<!-- others plugins -->
+	<script src="js/plugins.js"></script>
+	<script src="js/scripts.js"></script>
+
+</body>
+
+</html>

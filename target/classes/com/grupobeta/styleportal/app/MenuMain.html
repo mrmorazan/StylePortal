@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Style Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/png"
+	href="images/icon/favicon.ico">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/themify-icons.css">
+<link rel="stylesheet" href="css/metisMenu.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/slicknav.min.css">
+<!-- others css -->
+<link rel="stylesheet" href="css/typography.css">
+<link rel="stylesheet" href="css/default-css.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/responsive.css">
+<!-- modernizr css -->
+<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+	<wicket:panel>
+
+		<div class="sidebar-menu">
+			<div class="sidebar-header">
+				<div class="logo">
+					<a><img src="images/icon/logo2.png" alt="logo"></a>
+				</div>
+			</div>
+
+			<div class="main-menu">
+				<div class="menu-inner">
+					<nav>
+						<ul class="metismenu" id="menu">
+							<li><a href="javascript:void(0)" aria-expanded="true"><i
+									class="ti-home"></i><span><wicket:message key="home"></wicket:message></span></a>
+								<ul class="collapse">
+									<li><a href="#" wicket:id="home"><wicket:message key="homePage"></wicket:message></a></li>
+								</ul></li>
+							<li><a href="javascript:void(0)" aria-expanded="true"><i
+									class="ti-brush"></i><span><wicket:message key="stylePortal"></wicket:message></span></a>
+								<ul class="collapse">
+									<li><a href="#" wicket:id="stylePortal"><wicket:message key="stylePortal"></wicket:message></a></li>
+								</ul></li>
+							<li><a href="javascript:void(0)" aria-expanded="true"><i
+									class="ti-settings"></i><span><wicket:message key="setting"></wicket:message></span></a>
+								<ul class="collapse">
+									<li><a href="#" wicket:id="managementRoles"><wicket:message key="rolesPage"></wicket:message></a>
+									</li>
+								</ul></li>
+							<li><a href="javascript:void(0)" aria-expanded="true"><i
+									class="ti-user"></i><span><wicket:message key="admin"></wicket:message></span></a>
+								<ul class="collapse">
+									<li><a href="#" wicket:id="adminUsers"><wicket:message key="usersPage"></wicket:message></a></li>
+									<li><a href="#" wicket:id="adminGroups"><wicket:message key="groupsPage"></wicket:message></a></li>
+									<li><a href="#" wicket:id="adminDictionary"><wicket:message key="dictionary"></wicket:message></a></li>
+								</ul></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+	</wicket:panel>
+	<!-- jquery latest version -->
+	<script src="js/vendor/jquery-2.2.4.min.js"></script>
+	<!-- bootstrap 4 js -->
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/metisMenu.min.js"></script>
+	<script src="js/jquery.slimscroll.min.js"></script>
+	<script src="js/jquery.slicknav.min.js"></script>
+
+	<!-- others plugins -->
+	<script src="js/plugins.js"></script>
+	<script src="js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,648 @@
+:root { 
+	--primary-color: #3f51b5; 
+	--color: #3f51b5; 
+	--color-secondary: #9fa8da; 
+	--color-tertiary: #283593; 
+	--accenColor: #448aff; 
+	--font-color: #fff;
+}
+
+.feedback {
+	position: absolute;
+	z-index: 2;
+	margin: 0 auto;
+	width: 100%;
+	-webkit-animation: seconds 1.0s forwards;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-delay: 5s;
+	animation: seconds 1.0s forwards;
+	animation-iteration-count: 1;
+	animation-delay: 5s;
+}
+
+.feedbackPanel {
+	display: flex;
+	justify-content: space-between;
+	padding-left: 0.2em;
+	width: auto;
+	list-style: none;
+}
+
+.feedbackPanelERROR {
+	text-align: center;
+	font-size: 13px;
+	line-height: 1;
+	width: 100%;
+	background-color: #ef9a9a;
+	border: 2px solid #ffcdd2;
+	color: #444;
+	border-radius: 5px;
+	padding: 0.7em;
+	margin-bottom: 0.5em;
+	margin-right: 0.7em
+}
+
+.feedbackPanelINFO {
+	font-size: 13px;
+	width: 100%;
+	line-height: 1;
+	text-align: center;
+	background-color: #effad1;
+	border: 2px solid #8db715;
+	color: #444;
+	border-radius: 5px;
+	padding: 0.7em;
+	margin-bottom: 0.5em;
+	margin-right: 0.7em;
+}
+
+.feedbackPanelWARNING {
+	font-size: 13px;
+	width: 100%;
+	line-height: 1;
+	text-align: center;
+	background-color: #FFE082;
+	border: 2px solid #FFC400;
+	color: #444;
+	border-radius: 5px;
+	padding: 0.7em;
+	margin-bottom: 0.5em;
+	margin-right: 0.7em;
+}
+
+.message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	width: 25em;
+	background-color: #D04B40;
+	color: #fff;
+	border-bottom: 1px solid rgba(254, 0, 0, 0.3);
+	font-weight: normal;
+	font-size: 0.9em;
+	border-radius: 5px;
+	padding: 1em;
+	top: -3em;
+}
+
+.message:before {
+	position: relative;
+	top: -3px;
+	display: inline-block;
+	font-family: "GB-Icons";
+	content: "r";
+	font-size: 2.5em;
+	color: #fff;
+}
+
+.message ul {
+	list-style: none;
+}
+
+@-webkit-keyframes seconds { 
+	0% {
+	opacity: 1;
+	}
+
+	100% {
+		opacity:0;
+		left:-9999px;
+		position:absolute;
+	}
+}
+@-moz-keyframes seconds { 
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity:0;
+		left:-9999px;
+		position:absolute;
+	}
+}
+
+@-ms-keyframes seconds { 
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity:0;
+		left:-9999px;
+		position:absolute;
+	}
+}
+
+@-o-keyframes seconds { 
+	0% {
+		opacity: 1;
+	}
+
+	100%
+	{
+		opacity:0;
+		left:-9999px;
+		position:absolute;
+	}
+}
+
+@keyframes seconds { 
+	0% {
+		opacity: 1;
+	}
+
+	100%
+	{
+		opacity:0;
+		left:-9999px;
+		position:absolute;
+}
+} 
+
+/* Wicket autocomplete */
+div.wicket-aa {
+	background-color: var(--color-secondary);
+	border: 1px solid #CCCCCC;
+	padding: 0.5em;
+	color: black;
+}
+
+div.wicket-aa ul {
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	margin: 0pt;
+	padding: 5px;
+}
+
+div.wicket-aa ul li.selected {
+	background-color: var(--color);
+	cursor: pointer;
+	color: #fff;
+}
+
+div.wicket-aa ul li:before {
+	content: " \2219 ";
+	font-weight: bold;
+	font-size: 20px;
+	padding-right: 5px;
+	vertical-align: middle;
+}
+
+.fixed-nav {
+	margin: 0 auto;
+	position: fixed;
+	z-index: 999;
+}
+
+div.tab-panel {
+	width: 99.99999998999999%;
+	*width: 99.94680850063828%;
+}
+
+.tab-container .tab-row {
+	position: relative;
+	height: 40px;
+	padding: 0;
+	left: 0;
+	background-color: #fff;
+	border-bottom: 2px solid #e8e8e8;
+}
+
+.tab-container .tab-row ul {
+	text-decoration: none;
+	list-style: none;
+	position: relative;
+	height: 40px;
+	display: -webkit-flex;
+	justify-content: center;
+	padding: 0;
+	left: 0;
+}
+
+.tab-container .tab-row ul li {
+	flex: auto;
+}
+
+.tab-container .tab-row ul li a {
+	display: block;
+	height: 40px;
+	padding: 0 0.7em;
+	line-height: 40px;
+	border-right: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	border-radius: 5px 5px 0 0;
+	border-left: 1px solid #ddd;
+	text-align: center;
+	font-size: 14px;
+	font-style: oblique;
+	font-weight: bold;
+}
+
+.tab-container .tab-row ul li a:hover {
+	background-color: var(- -color-tertiary) !important;
+	border-bottom: 2px solid var(- -color-secondary);
+	color: #444 !important;
+	border-right: 1px solid var(- -color-secondary);
+}
+
+.tab-container .tab-row li.selected a:link, .tab-container .tab-row a:visited.active
+	{
+	border-bottom: 2px solid var(- -color);
+	color: #444;
+	border-right: 1px solid var(- -color);
+	border-left: 1px solid var(- -color);
+	border-top: 1px solid var(- -color);
+}
+
+.file-input {
+	border-radius: 0.2em;
+	margin-left: 1em;
+	position: relative;
+	background-color: #fff;
+	border-right: 1px solid #e8e8e8;
+	border-bottom: 1px solid #e8e8e8;
+	border-top: 1px solid #e8e8e8;
+	padding: 0.34em 7em 0.3em 0;
+	width: 100%;
+	color: #bbb;
+}
+
+.file-input:focus {
+	outline: none !important;
+	border: 0;
+	border: 1px solid var(- -color);
+}
+
+.file-input::before {
+	content: ' Select file';
+	background: #f6f6f6;
+	border: 1px solid #e8e8e8;
+	border-radius: 0.2em 0 0 0.2em;
+	color: #555;
+	padding: 0.38em 0.9em;
+	outline: none;
+	white-space: nowrap;
+	cursor: pointer;
+	position: absolute;
+	text-align: center;
+	top: -1px;
+	left: -1px;
+	width: 139px;
+}
+
+.file-input:focus::before {
+	outline: none !important;
+	border: 1px solid var(- -color);
+}
+
+.file-input::after {
+	font-family: 'gb-Icons';
+	content: 'l';
+	background: #f6f6f6;
+	border-right: 0px;
+	border-radius: 0.2em 0 0 0.2em;
+	color: var(- -color);
+	font-size: 1.2em;
+	padding: 0.3em 0.4em 0.45em 0.5em;
+	outline: none;
+	white-space: nowrap;
+	cursor: pointer;
+	font-weight: 600;
+	font-size: 10pt;
+	position: absolute;
+	top: 1px;
+	left: 1em;
+}
+
+.file-input:focus::after {
+	outline: none !important;
+	border-right: none;
+}
+
+.headerSpan {
+	border: solid 1px;
+	border-color: var(- -color-tertiary);
+	font-size: 13px;
+	float: right;
+	margin-top: -10px;
+	padding: 5px;
+	border-radius: 10px 10px 10px 10px;
+	background-color: var(- -color);
+	color: var(- -font-color);
+}
+
+/*div wicket-modal*/
+div.wicket-mask-dark {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: .1;
+	background-color: black;
+	filter: alpha(opacity = 10);
+	background-image: url('transparent2.png')
+}
+
+div.wicket-mask-transparent {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('transparent1.gif')
+}
+
+div.wicket-modal {
+	_position: absolute;
+	z-index: 20001;
+	visibility: hidden
+}
+
+div.wicket-modal div.w_top_1 {
+	width: 100%;
+	overflow: hidden
+}
+
+div.wicket-modal div.w_top {
+	height: 11px;
+	background-position: 0 -16px;
+	overflow: hidden;
+	cursor: n-resize;
+	padding: 0;
+	margin: 0
+}
+
+div.wicket-modal .w_topLeft {
+	width: 14px;
+	height: 11px;
+	float: left;
+	background-position: 0 0;
+	overflow: hidden;
+	cursor: nw-resize
+}
+
+div.wicket-modal div.w_topRight {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 14px;
+	height: 11px;
+	float: right;
+	background-position: -16px 0;
+	overflow: hidden;
+	cursor: ne-resize;
+}
+
+div.wicket-modal div.w_left {
+	background-position: 0 0;
+	background-repeat: repeat-y;
+	cursor: w-resize;
+	width: 50%
+}
+
+div.wicket-modal div.w_right_1 {
+	margin: 0 auto;
+	width: 70%;
+}
+
+div.wicket-modal div.w_right {
+	background-position: right;
+	background-repeat: repeat-y;
+	cursor: e-resize;
+	width: 100%
+}
+
+div.wicket-modal div.w_blue div.w_left, div.wicket-modal div.w_blue div.w_right
+	{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	background-image: none !important;
+	_background-image: none !important;
+}
+
+div.wicket-modal div.w_content_1 {
+	margin: 0 auto;
+	width: 70% !important;
+}
+
+div.wicket-modal div.w_caption {
+	height: 40px;
+	font-size: 15px !important;
+	line-height: 40px !important;
+	padding-top: 0.5em;
+	padding-left: 1em !important;
+	border-radius: 7px 7px 0 0;
+}
+
+div.wicket-modal a.w_close {
+	height: 16px;
+	width: 16px;
+	overflow: hidden;
+	background-position: -64px 0;
+	position: absolute;
+	top: 12px;
+	right: 7px;
+	padding: 0;
+	margin: 0;
+	color: var(- -color);
+}
+
+div.wicket-modal a.w_close:hover {
+	float: right;
+	height: 16px;
+	width: 16px;
+	overflow: hidden;
+	background-position: -80px 0
+}
+
+div.wicket-modal h3.w_captionText {
+	height: 1.4em !important;
+	line-height: 1.4em !important;
+	position: absolute !important;
+	margin-left: 3px;
+	margin-bottom: 0;
+	margin-top: 0;
+	font-weight: normal !important;
+	left: 10px !important;
+	font-size: 18px !important;
+	color: #444 !important;
+}
+
+div.wicket-modal h3.w_captionText:before {
+	font-family: 'FontAwesome';
+	content: "\f097";
+	padding-right: 7px;
+	position: relative;
+	font-weight: normal !important;
+	color: var(- -color) !important;
+}
+
+div.wicket-modal div.w_content_2 {
+	width: 100%;
+	background-color: white;
+	padding-top: .1em;
+	_overflow: auto;
+	cursor: default
+}
+
+div.wicket-modal div.w_content_3 {
+	border: 1px solid #bbb;
+	padding: 0
+}
+
+div.wicket-modal div.w_content {
+	width: 100%;
+	background-color: white
+}
+
+div.wicket-modal div.w_content_container {
+	position: relative
+}
+
+div.wicket-modal iframe.wicket_modal {
+	width: 100%;
+	height: 400px;
+	padding: 0;
+	margin: 0;
+	border-width: 0;
+	position: relative
+}
+
+div.wicket-modal div.w_bottom_1 {
+	width: 100%;
+	overflow: hidden;
+	cursor: n-resize
+}
+
+div.wicket-modal div.w_bottom {
+	height: 15px;
+	background-position: 0 -32px;
+	overflow: hidden
+}
+
+div.wicket-modal div.w_bottomRight {
+	width: 14px;
+	height: 15px;
+	float: right;
+	background-position: -48px 0;
+	cursor: nw-resize;
+	overflow: hidden
+}
+
+div.wicket-modal div.w_bottomLeft {
+	width: 14px;
+	height: 15px;
+	float: left;
+	background-position: -32px 0;
+	overflow: hidden;
+	cursor: ne-resize
+}
+
+div.wicket-modal div.w_blue div.w_top, div.wicket-modal div.w_blue div.w_bottom,
+	div.wicket-modal div.w_blue div.w_topLeft, div.wicket-modal div.w_blue div.w_topRight,
+	div.wicket-modal div.w_blue div.w_bottomRight, div.wicket-modal div.w_blue div.w_bottomLeft,
+	div.wicket-modal div.w_blue a.w_close {
+	
+}
+
+div.wicket-modal div.w_silver div.w_left, div.wicket-modal div.w_silver div.w_right
+	{
+	background-image: none !important;
+	_background-image: none !important;
+}
+
+div.wicket-modal div.w_silver div.w_top, div.wicket-modal div.w_silver div.w_bottom,
+	div.wicket-modal div.w_silver div.w_topLeft, div.wicket-modal div.w_silver div.w_topRight,
+	div.wicket-modal div.w_silver div.w_bottomRight, div.wicket-modal div.w_silver div.w_bottomLeft,
+	div.wicket-modal div.w_silver a.w_close {
+	
+}
+
+#ajaxveil {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 1050;
+	overflow: auto;
+	opacity: 100;
+	/* width: 560px;
+  margin: -250px 0 0 -280px;*/
+	border: 1px solid #999;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	*border: 1px solid #999;
+	/* IE6-7 */
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+	/* -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box; */
+}
+
+#ajaxveil.fade {
+	-webkit-transition: opacity .3s linear, top .3s ease-out;
+	-moz-transition: opacity .3s linear, top .3s ease-out;
+	-ms-transition: opacity .3s linear, top .3s ease-out;
+	-o-transition: opacity .3s linear, top .3s ease-out;
+	transition: opacity .3s linear, top .3s ease-out;
+	top: -25%;
+}
+
+#ajaxveil.fade.in {
+	top: 50%;
+}
+
+.bottomGoTop {
+	position: fixed;
+	bottom: 45px;
+	right: 15px;
+	width: 45px;
+	height: 45px;
+	line-height: 40px;
+	text-align: center;
+	display: none;
+	background-color: var(- -color);
+	color: #fff;
+	border-radius: 50%;
+	z-index: 9999;
+}
+
+.gbSelect {
+	font-size: 13px !important;
+	height: 50px !important;
+}
+
+.btnLogin {
+	border: none!none;
+}
+
+.table-head {
+	background: var(- -color-secondary);
+}
+
+.pull-right {
+	float: right;
+}
+
+.link:hover {
+	cursor: pointer;
+}

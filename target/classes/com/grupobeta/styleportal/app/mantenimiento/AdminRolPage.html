@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Style Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/png"
+	href="images/icon/favicon.ico">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/themify-icons.css">
+<link rel="stylesheet" href="css/metisMenu.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/slicknav.min.css">
+<!-- others css -->
+<link rel="stylesheet" href="css/typography.css">
+<link rel="stylesheet" href="css/default-css.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/custom.css">
+<!-- modernizr css -->
+<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+	<wicket:extend>
+
+		<wicket:enclosure child="table">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="header-title"></h4>
+							<div class="single-table">
+								<div class="table-responsive">
+									<table class="table text-center">
+										<thead class="text-upppercase table-head">
+											<tr class="border-bottom">
+												<th><wicket:message key="codRol"></wicket:message></th>
+												<th><wicket:message key="nombre"></wicket:message></th>
+												<th><a href="#" wicket:id="add1" title="Add Rol"> <i
+														class="fas fa-plus-circle icons icon-color"></i>
+												</a></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr wicket:id="table">
+												<td wicket:id="codRol"></td>
+												<td wicket:id="nombre"></td>
+												<td><a href="#" wicket:id="edit" title="Edit Rol">
+														<i class="fas fa-edit icons icon-color"></i>
+												</a></td>
+											</tr>
+										</tbody>
+										<tfoot>
+											<tr class="text-upppercase table-head">
+												<th wicket:id="navigator" colspan="2">&nbsp;</th>
+												<th><a href="#" wicket:id="add2" title="Add Rol"> <i
+														class="fas fa-plus-circle icons icon-color"></i>
+												</a></th>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</wicket:enclosure>
+
+		<wicket:enclosure child="form">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<form wicket:id="form" class="form-horizontal form-label-left">
+
+								<div class="form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12"
+										for="codRol"><strong><wicket:message key="codRol"></wicket:message>:</strong></label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<input class="form-control form-control-sm input-rounded"
+											type="text" id="codRol" wicket:id="codRol" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="control-label col-md-3 col-sm-3 col-xs-12"
+										for="nombre"><strong><wicket:message key="nombre"></wicket:message>:</strong></label>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<input class="form-control form-control-sm input-rounded"
+											type="text" id="nombre" wicket:id="nombre" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+										<button form="form" type="submit" wicket:id="submit"
+											class="btn btn-rounded btn-primary mb-3">
+											<i class="fas fa-check icon-white"></i> <wicket:message key="submit"></wicket:message>
+										</button>
+
+										<button type="button" class="btn btn-rounded mb-3"
+											wicket:id="cancel">
+											<i class="fas fa-ban icon-color"></i> <wicket:message key="cancel"></wicket:message>
+										</button>
+									</div>
+								</div>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</wicket:enclosure>
+
+
+
+	</wicket:extend>
+	<!-- jquery latest version -->
+	<script src="js/vendor/jquery-2.2.4.min.js"></script>
+	<!-- bootstrap 4 js -->
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/metisMenu.min.js"></script>
+	<script src="js/jquery.slimscroll.min.js"></script>
+	<script src="js/jquery.slicknav.min.js"></script>
+
+	<!-- others plugins -->
+	<script src="js/plugins.js"></script>
+	<script src="js/scripts.js"></script>
+
+</body>
+
+</html>

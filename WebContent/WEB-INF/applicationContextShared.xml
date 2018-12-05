@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<jee:jndi-lookup resource-ref="true"
+		jndi-name="/jdbc/StylePortal" id="dsStylePortal" />
+
+	<jee:jndi-lookup resource-ref="true"
+		jndi-name="/jdbc/Poly" id="dsPoly" />
+
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="mail.grupobeta.com" />
+		<property name="username" value="it_applications" />
+		<property name="password" value="grupobeta2014" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.sendpartial">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="templateMessage"
+		class="org.springframework.mail.SimpleMailMessage">
+		<property name="from" value="StylePortal@grupobeta.com" />
+	</bean>
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dsStylePortal" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.grupobeta.styleportal.domain.Usuario</value>
+				<value>com.grupobeta.styleportal.domain.Rol</value>
+				<value>com.grupobeta.styleportal.domain.Language</value>
+				<value>com.grupobeta.styleportal.domain.Dictionary</value>
+			</list>
+		</property>
+		<property name="entityInterceptor">
+			<bean class="com.grupobeta.styleportal.domain.AuditInterceptor" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.default_schema">dbo</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+				<prop key="hibernate.default_catalog">StylePortalDB</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="sessionFactoryPoly"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dsPoly" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.grupobeta.styleportal.domain.CustomerPolyPm</value>
+			</list>
+		</property>
+		<property name="entityInterceptor">
+			<bean class="com.grupobeta.styleportal.domain.AuditInterceptor" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.default_schema">dbo</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+				<prop key="hibernate.default_catalog">PolyIT</prop>
+			</props>
+		</property>
+	</bean>
+
+
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+
+	<bean id="transactionManagerPoly"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactoryPoly" />
+	</bean>
+	<tx:annotation-driven
+		transaction-manager="transactionManagerPoly" />
+
+	<bean id="genericDao"
+		class="com.grupobeta.styleportal.dao.hibernate.GenericDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="usuarioDao"
+		class="com.grupobeta.styleportal.dao.hibernate.UsuarioDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="rolDao"
+		class="com.grupobeta.styleportal.dao.hibernate.RolDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="languageDao"
+		class="com.grupobeta.styleportal.dao.hibernate.LanguageDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="dictionaryDao"
+		class="com.grupobeta.styleportal.dao.hibernate.DictionaryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="customerPolyPmDao"
+		class="com.grupobeta.styleportal.dao.hibernate.CustomerPolyPmDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryPoly" />
+	</bean>
+
+	<bean id="authenticatedLDAP" class="com.grupobeta.util.LoginLDAP"></bean>
+	<bean id="usuarioDADao"
+		class="com.grupobeta.styleportal.dao.hibernate.UsuarioDADaoImpl">
+		<property name="authenticatedLDAP" ref="authenticatedLDAP"></property>
+	</bean>
+
+	<bean id="adminService"
+		class="com.grupobeta.styleportal.service.hibernate.AdministracionServiceImpl">
+		<property name="mailSender" ref="mailSender" />
+		<property name="templateMessage" ref="templateMessage" />
+		<property name="genericDao" ref="genericDao" />
+		<property name="rolDao" ref="rolDao" />
+		<property name="usuarioDADao" ref="usuarioDADao" />
+		<property name="usuarioDao" ref="usuarioDao" />
+		<property name="languageDao" ref="languageDao" />
+		<property name="dictionaryDao" ref="dictionaryDao" />
+	</bean>
+
+	<bean id="transService"
+		class="com.grupobeta.styleportal.service.hibernate.TransaccionesServiceImpl">
+		<property name="mailSender" ref="mailSender" />
+		<property name="templateMessage" ref="templateMessage" />
+		<property name="genericDao" ref="genericDao" />
+		<property name="customerPolyPmDao" ref="customerPolyPmDao" />
+	</bean>
+
+	<bean id="mantService"
+		class="com.grupobeta.styleportal.service.hibernate.MantenimientoServiceImpl">
+		<property name="mailSender" ref="mailSender" />
+		<property name="templateMessage" ref="templateMessage" />
+		<property name="genericDao" ref="genericDao" />
+	</bean>
+
+</beans>
