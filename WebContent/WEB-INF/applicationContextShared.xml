@@ -60,6 +60,8 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.grupobeta.styleportal.domain.CustomerPolyPm</value>
+				<value>com.grupobeta.styleportal.domain.StylePolyPm</value>
+				<value>com.grupobeta.styleportal.domain.SeasonPolyPm</value>
 			</list>
 		</property>
 		<property name="entityInterceptor">
@@ -119,6 +121,16 @@
 		class="com.grupobeta.styleportal.dao.hibernate.CustomerPolyPmDaoImpl">
 		<property name="sessionFactory" ref="sessionFactoryPoly" />
 	</bean>
+	
+	<bean id="stylePolyPmDao"
+		class="com.grupobeta.styleportal.dao.hibernate.StylePolyPmDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryPoly" />
+	</bean>
+	
+	<bean id="seasonPolyPmDao"
+		class="com.grupobeta.styleportal.dao.hibernate.SeasonPolyPmDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryPoly" />
+	</bean>
 
 	<bean id="authenticatedLDAP" class="com.grupobeta.util.LoginLDAP"></bean>
 	<bean id="usuarioDADao"
@@ -144,6 +156,8 @@
 		<property name="templateMessage" ref="templateMessage" />
 		<property name="genericDao" ref="genericDao" />
 		<property name="customerPolyPmDao" ref="customerPolyPmDao" />
+		<property name="stylePolyPmDao" ref="stylePolyPmDao" />
+		<property name="seasonPolyPmDao" ref="seasonPolyPmDao" />
 	</bean>
 
 	<bean id="mantService"

@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
+import org.apache.wicket.ajax.markup.html.form.AjaxCheckBox;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.image.ContextImage;
 import org.apache.wicket.markup.html.link.Link;
@@ -27,6 +29,7 @@ import com.grupobeta.wicket.GBSubmitButton;
 import com.grupobeta.wicket.GBTextField;
 
 import com.grupobeta.wicket.PageablePropertyListView;
+import com.sun.mail.imap.protocol.Status;
 
 public class UsersPage extends AdminBasePage<Usuario> {
 	private static final long serialVersionUID = 1L;
@@ -34,6 +37,7 @@ public class UsersPage extends AdminBasePage<Usuario> {
 	protected GBTextField txtSearch;
 	GBRequiredTextField txcodusuario;
 	GBRequiredTextField txnombre;
+	protected Boolean status;
 
 	public UsersPage() {
 		final PageablePropertyListView<Usuario> table = new PageablePropertyListView<Usuario>(
@@ -42,13 +46,15 @@ public class UsersPage extends AdminBasePage<Usuario> {
 
 			@Override
 			protected List<Usuario> loadItems() {
-				if(getSearchUser()==null){
+				if(getSearchUser()==null && getStatus()==null){
 					return new ArrayList<Usuario>(getAdminService().loadUsuarios());
 					} else {
+						
 						return new ArrayList<Usuario>(
-								getAdminService().findUsuarios(getSearchUser())
+								getAdminService().find(getSearchUser(), getStatus())
 								);
 					}
+				
 			}
 
 			@Override
@@ -122,17 +128,39 @@ public class UsersPage extends AdminBasePage<Usuario> {
 			@Override
 			protected void onSubmit(AjaxRequestTarget target) {
 				super.onSubmit(target);
+				if (getStatus()==null) {
+					setStatus(Boolean.TRUE);
+				}
+				
 				setSearchUser((String) txtSearch.getDefaultModelObject());
 				table.detachItems();
 				target.add(this.getPage());
 			}
 		});
+		
+		formSearch.add(new AjaxCheckBox("status") {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void onUpdate(AjaxRequestTarget target) {
+				
+				
+			}
+			
+		});
+		
+		formSearch.add(new Link<Void>("cancel2") {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				setAction(Action.VIEW);
+				setResponsePage(UsersPage.class);
+			}
+		});
 
 		this.add(formSearch);
-		this.setMarkupId("formSearch");
-
-
-
+		
 		final Form<Usuario> form = new CompoundPropertyForm<Usuario>("form",
 				getSelectedObjectModel()) {
 			private static final long serialVersionUID = 1L;
@@ -275,6 +303,17 @@ public class UsersPage extends AdminBasePage<Usuario> {
 		this.txtSearch = txtSearch;
 	}
 
+	public Boolean getStatus() {
+		return status;
+	}
 
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+
+	
+	
+
+	
 
 }

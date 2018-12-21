@@ -214,6 +214,11 @@ public class AdministracionServiceImpl extends AbstractHibernateServiceImpl impl
 	public List<Usuario> findUsuarios(String input) {
 		return getUsuarioDao().find(input);
 	}
+	
+	@Override
+	public List<Usuario> find(String input, boolean status) {
+		return getUsuarioDao().find(input, status);
+	}
 
 	@Override
 	public List<Language> loadAllLanguage() {

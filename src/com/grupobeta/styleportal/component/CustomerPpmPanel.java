@@ -5,6 +5,7 @@ import org.apache.wicket.markup.html.image.ContextImage;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 
+import com.grupobeta.styleportal.app.styleportal.StylesPolyPmPage;
 import com.grupobeta.styleportal.domain.CustomerPolyPm;
 
 public class CustomerPpmPanel extends Panel {
@@ -19,7 +20,7 @@ public class CustomerPpmPanel extends Panel {
 
 			@Override
 			public void onClick() {
-		
+				setResponsePage(new StylesPolyPmPage(customerPolyPm));
 			}
 			
 		};

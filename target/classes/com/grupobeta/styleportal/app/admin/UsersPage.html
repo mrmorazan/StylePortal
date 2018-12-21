@@ -32,18 +32,35 @@
 					<div class="card">
 						<div class="card-body">
 							<form wicket:id="formSearch">
-								<div class="form-group">
-									<div class="col-md-1">
-										<label for="user"><wicket:message key="user"></wicket:message></label>
-									</div>
-									<div class="col-md-3">
-										<input class="form-control form-control-sm input-rounded"
+								<div class="form-row align-items-center">
+
+									<div class="col-sm-3 my-1">
+										<label for="user"><wicket:message
+												key="user"></wicket:message></label> <input
+											class="form-control form-control-sm input-rounded"
 											type="text" id="user" wicket:id="txtSearch" />
 									</div>
-									<div class="col-md-8">
-										<button class="btn btn-rounded btn-primary mb-3" type="submit" wicket:id="submit2"
-											id="submit2" ><wicket:message key="search"></wicket:message></button>
-										
+									<div class="col-sm-3 my-1">
+										<div class="custom-control custom-checkbox mr-sm-2">
+											<label for="status"><wicket:message
+												key="status"></wicket:message></label>
+											<input type="checkbox" id="switch" wicket:id="status" /><label for="switch" class="labelSwitch"><wicket:message
+												key="status"></wicket:message></label>
+											 
+										</div>
+									</div>
+									<div class="col-auto my-1">
+										<button class="btn btn-rounded btn-primary mb-3" type="submit"
+											wicket:id="submit2" id="submit2">
+											<wicket:message key="search"></wicket:message>
+										</button>
+									</div>
+									<div class="col-auto my-1">
+										<button class="btn btn-rounded mb-3" type="button"
+											wicket:id="cancel2">
+											<i class="fas fa-ban icon-color"></i>
+											<wicket:message key="cancel"></wicket:message>
+										</button>
 									</div>
 								</div>
 
@@ -68,8 +85,8 @@
 												<th><wicket:message key="userCode"></wicket:message></th>
 												<th><wicket:message key="userName"></wicket:message></th>
 												<th><wicket:message key="email"></wicket:message></th>
-												<th><wicket:message key="status"></wicket:message></th>
 												<th><wicket:message key="department"></wicket:message></th>
+												<th><wicket:message key="status"></wicket:message></th>
 												<th><a href="#" wicket:id="add" title="Add User"> <i
 														class="fas fa-user-plus icons"></i>
 												</a> <span><wicket:message key="actions"></wicket:message></span></th>
@@ -86,7 +103,7 @@
 														wicket:id="toggleLabel"></span>
 												</a></td>
 												<td width="100px"><a href="#" wicket:id="edit"> <i
-														class="fas fa-pencil icons"></i>
+														class="fas fa-edit icons"></i>
 												</a></td>
 											</tr>
 										</tbody>
@@ -115,10 +132,10 @@
 						<div class="card-body">
 							<form wicket:id="form" class="form-horizontal form-label-left">
 
-								 <div class="form-group">
+								<div class="form-group">
 									<label class="col-form-label col-md-3 col-sm-3 col-xs-12"
-										for="codUsuario"><wicket:message key="userCode"></wicket:message>: <span class="required">*</span>
-									</label>
+										for="codUsuario"><wicket:message key="userCode"></wicket:message>:
+										<span class="required">*</span> </label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
 										<input class="form-control form-control-sm input-rounded"
 											type="text" id="codUsuario" wicket:id="codUsuario" />
@@ -128,8 +145,8 @@
 
 								<div class="form-group">
 									<label class="col-form-label col-md-3 col-sm-3 col-xs-12"
-										for="nombre"><wicket:message key="userName"></wicket:message>: <span class="required">*</span>
-									</label>
+										for="nombre"><wicket:message key="userName"></wicket:message>:
+										<span class="required">*</span> </label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
 										<input class="form-control form-control-sm input-rounded"
 											type="text" id="nombre" wicket:id="nombre" />
@@ -146,28 +163,29 @@
 											wicket:id="correoElectronico" />
 									</div>
 								</div>
-								
+
 								<div class="form-group">
 									<label class="col-form-label col-md-3 col-sm-3 col-xs-12"
 										for="department"><wicket:message key="department"></wicket:message>:</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
 										<input class="form-control form-control-sm input-rounded"
-											type="text" id="department"
-											wicket:id="department" />
+											type="text" id="department" wicket:id="department" />
 									</div>
 								</div>
 
-								
+
 								<div class="form-group">
 									<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 										<button wicket:id="submit" type="submit"
 											class="btn btn-rounded btn-primary mb-3">
-											<i class="fas fa-check icon-white"></i> <wicket:message key="submit"></wicket:message>
+											<i class="fas fa-check icon-white"></i>
+											<wicket:message key="submit"></wicket:message>
 										</button>
 
-										<button class="btn btn-rounded mb-3" type="button" 
+										<button class="btn btn-rounded mb-3" type="button"
 											wicket:id="cancel">
-											<i class="fas fa-ban icon-color"></i> <wicket:message key="cancel"></wicket:message>
+											<i class="fas fa-ban icon-color"></i>
+											<wicket:message key="cancel"></wicket:message>
 										</button>
 									</div>
 								</div>

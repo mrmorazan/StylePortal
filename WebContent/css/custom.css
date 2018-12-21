@@ -636,7 +636,7 @@ div.wicket-modal div.w_silver div.w_top, div.wicket-modal div.w_silver div.w_bot
 }
 
 .table-head {
-	background: var(- -color-secondary);
+	background: var(--color-secondary);
 }
 
 .pull-right {
@@ -645,4 +645,90 @@ div.wicket-modal div.w_silver div.w_top, div.wicket-modal div.w_silver div.w_bot
 
 .link:hover {
 	cursor: pointer;
+}
+
+
+
+a{
+	/*color: var(--color);*/
+	transition: all 0.5s; 
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding:0.2em;
+	
+}
+
+a:hover{
+	color: var(--font-color);
+	background-color: var(--color-secondary);
+}
+
+.goto a {
+    border: 1px solid #ddd;
+    color: var(--color);
+    text-align: center;
+    border-radius: 50%;
+    display: inline-block;
+    width: 30px;
+    line-height: 1.5;
+    font-weight: normal;
+}
+.goto a:hover{
+	color:#fff !important;
+}
+
+.header-title-style{
+	background: var(--color-secondary);
+	text-align: center;
+	padding: 12px 0;
+	color: #333;
+	font-weight: bold;
+	
+}
+
+.seo-fact:hover{
+	cursor: pointer;
+}
+
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+.labelSwitch {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 70px;
+	height: 40px;
+	background: grey;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+.labelSwitch:after {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 30px;
+	height: 30px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+input:checked + .labelSwitch {
+	background: var(--color-secondary);
+}
+
+input:checked + .labelSwitch:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+.labelSwitch:active:after {
+	width: 130px;
 }

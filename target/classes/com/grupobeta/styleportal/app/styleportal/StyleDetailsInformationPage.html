@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Style Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/png"
+	href="images/icon/favicon.ico">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/themify-icons.css">
+<link rel="stylesheet" href="css/metisMenu.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/slicknav.min.css">
+<!-- others css -->
+<link rel="stylesheet" href="css/typography.css">
+<link rel="stylesheet" href="css/default-css.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/custom.css">
+<!-- modernizr css -->
+<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+	<wicket:extend>
+
+		<div class="row">
+			<div class="col-lg-4">
+				<div wicket:id="divHeader">
+					<h3 class="header-title-img">
+						<span wicket:id="styleNumber"></span>&nbsp;<span
+							wicket:id="seasonName"></span>
+					</h3>
+					<div class="card-body">
+						<div class="cripto-live div-style mt-1">
+							<img wicket:id="remoteImage" src="../img/notAvailableImage.png" class="div-style-image">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-8">
+				<div class="row">
+						<div class="col-lg-12">
+							<div class="card" wicket:id="divDetails">
+								<h3 class="detail-header">
+									<wicket:message key="detailsInformation"></wicket:message>
+								</h3>
+								<div class="card-body">
+									<div class="cripto-live mt-1">
+										<div class="row">
+											<div class="col-lg-6">
+												<div class="form-group row">
+													<label class="control-label label-information col-md-6 col-sm-6 col-xs-12"
+														for="divisionName"><strong><wicket:message
+																key="division"></wicket:message>:</strong></label>
+													<div class="col-md-6 col-sm-6 col-xs-12">
+														<span class="span-information"
+															wicket:id="divisionName" id="divisionName"></span>
+													</div>
+												</div>
+
+												<div class="form-group row">
+													<label class="control-label label-information col-md-6 col-sm-6 col-xs-12"
+														for="styleCategoryName"><strong><wicket:message
+																key="type"></wicket:message>:</strong></label>
+													<div class="col-md-6 col-sm-6 col-xs-12">
+														<span class="span-information"
+															wicket:id="styleCategoryName" id="styleCategoryName"></span>
+													</div>
+
+												</div>
+												<div class="form-group row">
+
+													<label class="control-label label-information col-md-6 col-sm-6 col-xs-12"
+														for="subCategory"><strong><wicket:message
+																key="subCategory"></wicket:message>:</strong></label>
+													<div class="col-md-6 col-sm-6 col-xs-12">
+														<span class="span-information"
+															wicket:id="styleSubCategoryName" id="subCategory"></span>
+													</div>
+
+												</div>
+												<div class="form-group row">
+
+													<label class="control-label label-information col-md-6 col-sm-6 col-xs-12"
+														for="collectionName"><strong><wicket:message
+																key="collection"></wicket:message>:</strong></label>
+													<div class="col-md-6 col-sm-6 col-xs-12">
+														<span class="span-information"
+															wicket:id="collectionName" id="collectionName"></span>
+													</div>
+
+												</div>
+
+												<div class="form-group row">
+
+													<label class="control-label label-information col-md-6 col-sm-6 col-xs-12"
+														for="gearLine"><strong><wicket:message
+																key="gearLine"></wicket:message>:</strong></label>
+													<div class="col-md-6 col-sm-6 col-xs-12">
+														<span class="span-information"
+															wicket:id="gearLine" id="gearLine"></span>
+													</div>
+
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<div class="form-group row">
+
+													<label class="control-label label-information col-md-6 col-sm-6 col-xs-12"
+														for="silhouette"><strong><wicket:message
+																key="silhouette"></wicket:message>:</strong></label>
+													<div class="col-md-6 col-sm-6 col-xs-12">
+														<span class="span-information"
+															wicket:id="silhouette" id="silhouette"></span>
+													</div>
+
+												</div>
+												<div class="form-group row">
+
+													<label class="control-label label-information col-md-6 col-sm-6 col-xs-12"
+														for="pattern"><strong><wicket:message
+																key="pattern"></wicket:message>:</strong></label>
+													<div class="col-md-6 col-sm-6 col-xs-12">
+														<span class="span-information"
+															wicket:id="pattern" id="pattern"></span>
+													</div>
+
+												</div>
+												<div class="form-group row">
+
+													<label class="control-label label-information col-md-6 col-sm-6 col-xs-12"
+														for="yarnType"><strong><wicket:message
+																key="yarnType"></wicket:message>:</strong></label>
+													<div class="col-md-6 col-sm-6 col-xs-12">
+														<span class="span-information"
+															wicket:id="yarnType" id="yarnType"></span>
+													</div>
+
+												</div>
+												<div class="form-group row">
+
+													<label class="control-label label-information col-md-6 col-sm-6 col-xs-12"
+														for="fiber"><strong><wicket:message
+																key="fiber"></wicket:message>:</strong></label>
+													<div class="col-md-6 col-sm-6 col-xs-12">
+														<span class="span-information"
+															wicket:id="fiber" id="fiber"></span>
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						</div>
+					
+					<div class="row mt-3">
+						<div class="col-lg-12">
+							<div>
+								<!-- <h3 class="header-title header-title-style">
+									<wicket:message key="options"></wicket:message>
+								</h3> -->
+								<div class="margin-top">
+									<div class="cripto-live">
+										<div class="row">
+											<div class="col-md-4 card-padding  mb-3">
+												<div class="card">
+													<div class="seo-fact sbg6">
+														<div
+															class="p-4 d-flex justify-content-between align-items-center">
+															<div class="seofct-icon">
+																<i class="ti-agenda"></i> SPEC
+															</div>
+
+														</div>
+
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4 card-padding mb-3">
+												<div class="card">
+													<div class="seo-fact sbg5">
+														<div
+															class="p-4 d-flex justify-content-between align-items-center">
+															<div class="seofct-icon">
+																<i class="ti-dropbox"></i> BOM
+															</div>
+
+														</div>
+
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4 card-padding mb-3">
+												<div class="card">
+													<div class="seo-fact  sbg6">
+														<div
+															class="p-4 d-flex justify-content-between align-items-center">
+															<div class="seofct-icon">
+																<i class="ti-pin-alt"></i> STICHING
+															</div>
+
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-md-4 card-padding  mb-3">
+												<div class="card">
+													<div class="seo-fact sbg5">
+														<div
+															class="p-4 d-flex justify-content-between align-items-center">
+															<div class="seofct-icon">
+																<i class="ti-cut"></i> PATTERN
+															</div>
+
+														</div>
+
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4 card-padding mb-3">
+												<div class="card">
+													<div class="seo-fact sbg6">
+														<div
+															class="p-4 d-flex justify-content-between align-items-center">
+															<div class="seofct-icon">
+																<i class="ti-pencil"></i> ART
+															</div>
+
+														</div>
+
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4 card-padding mb-3">
+												<div class="card">
+													<div class="seo-fact sbg5">
+														<div
+															class="p-4 d-flex justify-content-between align-items-center">
+															<div class="seofct-icon">
+																<i class="ti-stats-up"></i> PRODUCTION ROUTE
+															</div>
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		
+		
+
+
+
+
+
+	</wicket:extend>
+	<!-- jquery latest version -->
+	<script src="js/vendor/jquery-2.2.4.min.js"></script>
+	<!-- bootstrap 4 js -->
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/metisMenu.min.js"></script>
+	<script src="js/jquery.slimscroll.min.js"></script>
+	<script src="js/jquery.slicknav.min.js"></script>
+
+	<!-- others plugins -->
+	<script src="js/plugins.js"></script>
+	<script src="js/scripts.js"></script>
+
+</body>
+
+</html>

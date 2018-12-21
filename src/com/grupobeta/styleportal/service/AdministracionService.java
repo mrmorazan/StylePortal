@@ -49,6 +49,7 @@ public interface AdministracionService extends Service {
 
 	List<Usuario> findUsuarios(String input, String codRol);
 	List<Usuario> findUsuarios(String input);
+	List<Usuario> find(String input, boolean status);
 
 	List<Rol> loadRoles();
 

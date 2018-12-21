@@ -73,6 +73,25 @@ public class UsuarioDaoImpl extends AbstractHibernateDaoImpl<Usuario, Long>
 			return new ArrayList<Usuario>(query.list());
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Usuario> find(String input, boolean status) {
+		
+		String hql = "from Usuario "
+				+ " where estado = :status";
+		if (input != null ) {
+			hql+= " and (codUsuario like :input or nombre like :input) ";
+		}	
+				
+		Query query = getSession().createQuery(hql);
+		 query.setParameter("status", status);
+		if (input != null ) {
+			query.setParameter("input", "%" + input + "%");
+		}
+
+		return new ArrayList<Usuario>(query.list());
+	}
 
 	@Override
 	public Usuario loadByCodEstado(String codUsuario) {

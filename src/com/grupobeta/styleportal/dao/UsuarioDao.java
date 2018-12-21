@@ -17,6 +17,7 @@ import com.grupobeta.styleportal.domain.Usuario;
 		Usuario loadByEmail(String email);
 		List<Usuario> find(String input, String codRol);
 		List<Usuario> find(String input);
+		List<Usuario> find(String input, boolean status);
 
 		List<String> loadUserCodeFromPlant(String planCode);
 		

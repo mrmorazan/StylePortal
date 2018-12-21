@@ -28,6 +28,7 @@ public class StylePortalSession extends AuthenticatedWebSession {
 
 	
 	protected String codUsuario = null;
+	protected String password = null;
 	protected String codUsuarioError = null;
 	protected int numErrores = 0;
 	protected RuntimeException lastException;
@@ -72,6 +73,7 @@ public class StylePortalSession extends AuthenticatedWebSession {
 
 			if (flag) {
 				setCodUsuario(username);
+				setPassword(password);
 				setTimeoutUser();
 
 			} else {
@@ -220,6 +222,16 @@ public class StylePortalSession extends AuthenticatedWebSession {
 
 		return foto;
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
 
 
 	

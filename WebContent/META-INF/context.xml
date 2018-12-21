@@ -8,9 +8,10 @@
 		name="/jdbc/StylePortal" validationQuery="select 1" />
 		
 		<Resource maxTotal="30"
-		url="jdbc:jtds:sqlserver://GBSRVTPOLYTEST:1433/PolyIT;instance=MSSQLPOLYTEST;integratedSecurity=false;SelectMethod=cursor;"
-		driverClassName="net.sourceforge.jtds.jdbc.Driver" password="sp2011"
-		username="spapp" type="javax.sql.DataSource" auth="Container"
-		name="/jdbc/Poly" validationQuery="select 1" />
+		url="jdbc:jtds:sqlserver://GBSRVT39:1433/PolyGB;instance=MSSQLPOLYGB;integratedSecurity=false;SelectMethod=cursor;"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver" password="gbu900"
+		username="putilapp" type="javax.sql.DataSource" auth="Container" name="/jdbc/Poly" 
+		validationQuery="select 1"
+		/>
 
 </Context>

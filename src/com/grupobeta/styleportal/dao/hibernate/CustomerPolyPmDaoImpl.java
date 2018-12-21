@@ -16,7 +16,7 @@ public class CustomerPolyPmDaoImpl extends AbstractHibernateDaoImpl<CustomerPoly
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<CustomerPolyPm> loadAllCustomerActivesPolyPm() {
+	public List<CustomerPolyPm> loadAllCustomerActivesPolyPm(String customerCode, boolean inactives) {
 		List<CustomerPolyPm> resultados = new ArrayList<CustomerPolyPm>();
 		
 		String sql = "SELECT " +
@@ -25,11 +25,23 @@ public class CustomerPolyPmDaoImpl extends AbstractHibernateDaoImpl<CustomerPoly
 				", 'C'+a.CompanyNumber 'PortalCode' " +
 				", a.CompanyName " +
 				"FROM Addresses a " +
-				"WHERE a.AddrCategoryID = 2 " +
-				"AND a.StatusID = 30 " +
-				"ORDER BY a.CompanyNumber";
+				"WHERE a.AddrCategoryID = 2 ";
+				
+				if(!inactives) {
+					sql +="AND a.StatusID = 30 ";
+				} 
+				
+				if(customerCode!=null) {
+					sql +="AND a.CompanyNumber like :customerCode ";
+				} 
+				
+				sql +="ORDER BY a.CompanyNumber";
 		
 		Query query = getSession().createSQLQuery(sql).addEntity(CustomerPolyPm.class);
+		
+		if(customerCode!=null) {
+			query.setParameter("customerCode", "%"+customerCode+"%");
+		} 
 		
 		if(!query.list().isEmpty()) {
 			resultados = new ArrayList<CustomerPolyPm>(query.list());

@@ -11,6 +11,6 @@ import com.grupobeta.styleportal.domain.CustomerPolyPm;
 public interface CustomerPolyPmDao extends Dao<CustomerPolyPm, String> {
 
 	@Transactional(value="transactionManagerPoly", rollbackFor = { GBException.class, GBMultipleException.class })
-	List<CustomerPolyPm> loadAllCustomerActivesPolyPm();
+	List<CustomerPolyPm> loadAllCustomerActivesPolyPm(String customerCode, boolean inactives);
 	
 }
