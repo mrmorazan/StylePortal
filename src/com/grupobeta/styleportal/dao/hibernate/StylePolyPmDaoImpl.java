@@ -53,7 +53,7 @@ public class StylePolyPmDaoImpl extends AbstractHibernateDaoImpl<StylePolyPm, In
 				+ ",sc.StyleCategoryName " + ",s.Comments3 Pattern " + ",sc.StyleSubcategoryName " + ",s.Memo YarnType "
 				+ ",sc1.CollectionName " + ",s.Memo2 Fiber " + ",ddv.DropDownValue GearLine "
 				+ ",ISNULL(REPLACE('file://GBSRVT39/Poly-Docs/PolyGB/Documents/'+ d1.FilePath , '\\' , '/'),0) AS 'URLStyleImage' "
-				+ ",ISNULL(REPLACE('smb://"+StylePortalSession.get().getCodUsuario()+":"+StylePortalSession.get().getPassword()+"@10.1.0.7/Poly-Docs/PolyGB/Documents/'+ d1.FilePath , '\\' , '/'),0) AS 'URLStyleImage2' "
+				+ ", d1.FilePath AS 'URLStyleImage2' "
 				+ "FROM Styles s " + "LEFT JOIN Seasons s1 " + "ON s.SeasonID = s1.SeasonID "
 				+ "LEFT JOIN StatusNames sn " + "ON s.StatusID = sn.StatusID " + "LEFT JOIN StyleSilhouettes ss "
 				+ "ON s.SilhouetteID = ss.SilhouetteID " + "LEFT JOIN Divisions d " + "ON s.DivisionID = d.DivisionID "

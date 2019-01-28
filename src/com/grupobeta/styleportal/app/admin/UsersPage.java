@@ -7,7 +7,6 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.ajax.markup.html.form.AjaxCheckBox;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.image.ContextImage;
 import org.apache.wicket.markup.html.link.Link;
@@ -29,7 +28,6 @@ import com.grupobeta.wicket.GBSubmitButton;
 import com.grupobeta.wicket.GBTextField;
 
 import com.grupobeta.wicket.PageablePropertyListView;
-import com.sun.mail.imap.protocol.Status;
 
 public class UsersPage extends AdminBasePage<Usuario> {
 	private static final long serialVersionUID = 1L;
@@ -40,6 +38,7 @@ public class UsersPage extends AdminBasePage<Usuario> {
 	protected Boolean status;
 
 	public UsersPage() {
+		setStatus(Boolean.FALSE);
 		final PageablePropertyListView<Usuario> table = new PageablePropertyListView<Usuario>(
 				"table") {
 			private static final long serialVersionUID = 1L;
@@ -51,7 +50,7 @@ public class UsersPage extends AdminBasePage<Usuario> {
 					} else {
 						
 						return new ArrayList<Usuario>(
-								getAdminService().find(getSearchUser(), getStatus())
+								getAdminService().find(getSearchUser(), !getStatus())
 								);
 					}
 				
@@ -81,7 +80,7 @@ public class UsersPage extends AdminBasePage<Usuario> {
 					public boolean isEnabled() {
 						return super.isEnabled() && !item.getModelObject().equals(StylePortalSession.get().getUsuario());
 					}
-				}.add(new Label("toggleLabel", Model.of(item.getModelObject().isActivo() ? "Enable" : "Disable" ))));
+				}.add(new Label("toggleLabel", Model.of(item.getModelObject().isActivo() ? "Active" : "Inactive" ))));
 				
 				
 				

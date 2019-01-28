@@ -1,0 +1,214 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "gb-icons";
+  src:url("../fonts/gb-icons.eot");
+  src:url("../fonts/gb-icons.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/gb-icons.woff") format("woff"),
+    url("../fonts/gb-icons.ttf") format("truetype"),
+    url("../fonts/gb-icons.svg#gb-icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "gb-icons" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="gb-icon-"]:before,
+[class*=" gb-icon-"]:before {
+  font-family: "gb-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.gb-icon-configuracion:before {
+  content: "\62";
+}
+.gb-icon-version:before {
+  content: "\63";
+}
+.gb-icon-detallearchivo:before {
+  content: "\64";
+}
+.gb-icon-limpiar:before {
+  content: "\65";
+}
+.gb-icon-salir:before {
+  content: "\66";
+}
+.gb-icon-fecha:before {
+  content: "\67";
+}
+.gb-icon-archivo:before {
+  content: "\68";
+}
+.gb-icon-usuario:before {
+  content: "\69";
+}
+.gb-icon-pass:before {
+  content: "\6a";
+}
+.gb-icon-subir:before {
+  content: "\6b";
+}
+.gb-icon-ubicacion:before {
+  content: "\6c";
+}
+.gb-icon-acciones:before {
+  content: "\6e";
+}
+.gb-icon-postear:before {
+  content: "\6d";
+}
+.gb-icon-make:before {
+  content: "\71";
+}
+.gb-icon-error:before {
+  content: "\72";
+}
+.gb-icon-numero:before {
+  content: "\73";
+}
+.gb-icon-running:before {
+  content: "\74";
+}
+.gb-icon-estilo:before {
+  content: "\75";
+}
+.gb-icon-color:before {
+  content: "\76";
+}
+.gb-icon-color-descripcion:before {
+  content: "\77";
+}
+.gb-icon-planta:before {
+  content: "\78";
+}
+.gb-icon-estatus:before {
+  content: "\79";
+}
+.gb-icon-comentario:before {
+  content: "\7a";
+}
+.gb-icon-extra:before {
+  content: "\41";
+}
+.gb-icon-operador:before {
+  content: "\42";
+}
+.gb-icon-fechaimprimir:before {
+  content: "\43";
+}
+.gb-icon-inicio:before {
+  content: "\44";
+}
+.gb-icon-mantenimiento:before {
+  content: "\45";
+}
+.gb-icon-desarrollo:before {
+  content: "\47";
+}
+.gb-icon-bolt:before {
+  content: "\48";
+}
+.gb-icon-editar:before {
+  content: "\6f";
+}
+.gb-icon-detalles:before {
+  content: "\70";
+}
+.gb-icon-cancelar:before {
+  content: "\49";
+}
+.gb-icon-regresar:before {
+  content: "\4a";
+}
+.gb-icon-nuevo:before {
+  content: "\4b";
+}
+.gb-icon-ayuda:before {
+  content: "\4c";
+}
+.gb-icon-correcto:before {
+  content: "\4d";
+}
+.gb-icon-usuario1:before {
+  content: "\4e";
+}
+.gb-icon-buscar:before {
+  content: "\4f";
+}
+.gb-icon-al-icon:before {
+  content: "\50";
+}
+.gb-icon-gb-logo:before {
+  content: "\51";
+}
+.gb-icon-logodpt:before {
+  content: "\52";
+}
+.gb-icon-logosm:before {
+  content: "\53";
+}
+.gb-icon-gslogo:before {
+  content: "\61";
+}
+.gb-icon-logoqs:before {
+  content: "\54";
+}
+.gb-icon-excel:before {
+  content: "\55";
+}
+.gb-icon-enter:before {
+  content: "\56";
+}
+.gb-icon-uft:before {
+  content: "\46";
+}
+.gb-icon-enter-key:before {
+  content: "\57";
+}
+.gb-icon-jira:before {
+  content: "\58";
+}
+.gb-icon-koonol:before {
+  content: "\59";
+}
+.gb-icon-angle-down:before {
+  content: "\5a";
+}
+.gb-icon-angle-left:before {
+  content: "\30";
+}
+.gb-icon-angle-right:before {
+  content: "\31";
+}
+.gb-icon-angle-up:before {
+  content: "\32";
+}
+.gb-icon-koonol-circle:before {
+  content: "\33";
+}
+.gb-icon-bars:before {
+  content: "\34";
+}
+.gb-icon-logops:before {
+  content: "\35";
+}

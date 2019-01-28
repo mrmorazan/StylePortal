@@ -61,8 +61,8 @@
     transition: padding-left 0.3s ease 0s;
 }
 
-.sbar_collapsed .page-container {
-    padding-left: 0;
+.sbar_collapsed {
+    padding-left: 0 !important;
 }
 .sbar_collapsed .header-area {
    width: 100% !important;
@@ -140,16 +140,19 @@
 }
 
 .sidebar-header {
-    padding: 19px 32px 20px;
+    padding: 10px;
     background: #303641;
     border-bottom: 1px solid #343e50;
 }
 .sidebar-menu .logo{
     text-align: center;
 }
-.logo a {
+.logo {
     display: inline-block;
-    max-width: 120px;
+    color: var(--color-secondary) !important;
+    font-size: 60px;
+    text-align: center;
+    width: 100%;
 }
 
 .metismenu >li >a {
@@ -2443,13 +2446,16 @@ table.dataTable thead td {
     padding: 50px;
 }
 
-.login-form-head h4 {
+.login-form-head {
     letter-spacing: 0;
    /* text-transform: uppercase;*/
     font-weight: 600;
     margin-bottom: 7px;
     color: #fff;
+    font-size: 20px;
 }
+
+
 
 .login-form-head p {
     color: #fff;

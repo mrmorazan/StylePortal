@@ -1,6 +1,9 @@
 package com.grupobeta.wicket;
 
 import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -10,12 +13,6 @@ import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.resource.DynamicImageResource;
 import org.apache.wicket.request.resource.IResource;
-
-import com.grupobeta.styleportal.app.StylePortalSession;
-
-import jcifs.smb.NtlmPasswordAuthentication;
-import jcifs.smb.SmbFile;
-import jcifs.smb.SmbFileInputStream;
 
 public class RemoteImage extends Image {
 
@@ -85,32 +82,34 @@ public class RemoteImage extends Image {
 					}
 
 				} catch (IOException e) {
-					System.out.println(e.getMessage());
-
-					SmbFile file = null;
-					byte[] imageData = new byte[9216];
-
+					
+					InputStream targetStream = null;
 					try {
-						String url = urlModel2;
-					//	NtlmPasswordAuthentication auth = new NtlmPasswordAuthentication(null,
-					//			StylePortalSession.get().getCodUsuario(), StylePortalSession.get().getPassword());
-						file = new SmbFile(url);
+					//	String pathOrigen = urlModel2.replace("Styles", "");
+						
+					//	String pathFinal = File.separator + "media" + File.separator + "WinFiles"+File.pathSeparator + pathOrigen;
+						
+						File file = new File(urlModel2);
+						
+						targetStream = new FileInputStream(file);
+						ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 
-						try (SmbFileInputStream in = new SmbFileInputStream(file)) {
-							int size = in.available();
-							int filled = 0;
-							do {
-								byte[] tmpData = new byte[size - filled];
-								int read = in.read(tmpData);
-								System.arraycopy(tmpData, 0, imageData, filled, read);
-								filled += read;
-							} while (filled < size);
+						int nRead;
+						byte[] data = new byte[16384];
 
-							return imageData;
+						while ((nRead = targetStream.read(data, 0, data.length)) != -1) {
+						  buffer.write(data, 0, nRead);
 						}
 
-					} catch (Exception e2) {
-
+						return buffer.toByteArray();
+					} catch (Exception e1) {
+						
+					} finally {
+						try {
+							targetStream.close();
+						} catch (IOException e1) {
+							
+						}
 					}
 
 				}
