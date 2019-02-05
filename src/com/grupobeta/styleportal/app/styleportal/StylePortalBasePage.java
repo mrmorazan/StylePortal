@@ -16,7 +16,7 @@ public class StylePortalBasePage <T extends DomainObject>  extends BasePage {
 	protected T selectedObject = null;
 
 	public StylePortalBasePage (){
-		super(new StylePortalMenuPanel(), new HeaderPanel(), new MenuMain());
+		super(new StylePortalMenuPanel(), new HeaderPanel(true), new MenuMain());
 	}
 
 	protected Action getAction() {

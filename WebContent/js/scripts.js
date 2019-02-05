@@ -16,7 +16,7 @@
     sidebar collapsing
     ==================================*/
     $('.nav-btn').on('click', function() {
-        $('.page-container').toggleClass('sbar_collapsed');
+        $('.page-container').toggleClass('sbar_collapsed sbar_collapsed-close');
     });
 
     /*================================

@@ -62,6 +62,7 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>com.springsource.sts.roo.core.nature</nature>
 		<nature>org.springframework.ide.eclipse.core.springnature</nature>
 		<nature>org.fusesource.ide.project.RiderProjectNature</nature>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>

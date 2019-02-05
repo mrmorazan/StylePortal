@@ -27,103 +27,82 @@
 <body>
 	<wicket:extend>
 		
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="card">
-						<div class="card-body">
-							<form wicket:id="form">
-								 <div class="form-group">
-									<label class="col-form-label col-md-3 col-sm-3 col-xs-12"
-										for="styles"><wicket:message
-														key="style"></wicket:message>: <span class="required">*</span>
-									</label>
-									<div class="col-md-6 col-sm-6 col-xs-12">
-										<input class="form-control form-control-sm input-rounded"
-											type="text" id="styles" wicket:id="styles" />
-									</div>
-								</div>
-								
-								 <div class="form-group">
-									<label class="col-form-label col-md-3 col-sm-3 col-xs-12"
-										for="seasonPolyPm"><wicket:message
-														key="season"></wicket:message>: 
-									</label>
-									<div class="col-md-6 col-sm-6 col-xs-12">
-										<select class="form-control form-control-sm input-rounded"
-											 id="seasonPolyPm" wicket:id="seasonPolyPm" ></select>
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-										<button wicket:id="submit" type="submit"
-											class="btn btn-rounded btn-primary mb-3">
-											<i class="fas fa-check icon-white"></i><wicket:message
-														key="search"></wicket:message>
-										</button>
-
-										<button class="btn btn-rounded mb-3" type="button" 
-											wicket:id="cancel">
-											<i class="fas fa-ban icon-color"></i> <wicket:message
-														key="cancel"></wicket:message>
-										</button>
-									</div>
-								</div>
-								
-							</form>
-						</div>
-					</div>
-				</div>
+	<form wicket:id="form">
+		 <div class="flex-card ml-5 mb-2">
+		 	<div class="col-sm-4 my-1">
+				<label class="label-input"
+					for="styles"><wicket:message
+									key="style"></wicket:message> <span class="required">*</span>
+				</label>		
+				<input class="input-text-light"
+					type="text" id="styles" wicket:id="styles" />
 			</div>
+			
+		</div>
 		
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="card">
-						<div class="card-body">
-							<h4 class="header-title"></h4>
-							<div class="single-table">
-								<div class="table-responsive">
-									<table class="table text-center" wicket:id="divTable">
-										<thead class="text-upppercase table-head">
-											<tr>
-												<th><wicket:message
-														key="styleNumber"></wicket:message></th>
-												<th><wicket:message
-														key="season"></wicket:message></th>
-												<th><wicket:message
-														key="silhouette"></wicket:message></th>
-												<th><wicket:message
-														key="styleName"></wicket:message></th>
-												<th><wicket:message
-														key="statusName"></wicket:message></th>
-												<th><wicket:message
-														key="actions"></wicket:message></th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr wicket:id="table">
-												<td><a wicket:id="linkStyle"><span wicket:id="styleNumber"></span></a></td>
-												<td wicket:id="seasonName"></td>
-												<td wicket:id="silhouetteName"></td>
-												<td wicket:id="styleName"></td>
-												<td wicket:id="statusName"></td>
-												<td></td>
-												
-											</tr>
-										</tbody>
-										<tfoot>
-											<tr class="text-upppercase table-head">
-												<th wicket:id="navigator" colspan="5">&nbsp;</th>
-												<th></th>
-											</tr>
-										</tfoot>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+		<div class="flex-card ml-5 mb-3">
+		 	<div class="col-sm-4 my-1">
+				<label class="label-input"
+						for="seasonPolyPm"><wicket:message
+										key="season"></wicket:message> 
+					</label>
+				<select class="input-text-light"
+						 id="seasonPolyPm" wicket:id="seasonPolyPm" ></select>
 			</div>
+		</div>
+		
+		<div class="flex-card ml-5">
+			<div class="submit-btn-area ml-3">
+				<button wicket:id="submit" type="submit"
+					class="pd-btn-primary">
+					<i class="fas fa-check icon-margin"></i><wicket:message
+								key="search"></wicket:message>
+				</button>
+			</div>	
+			<div class="submit-btn-area ml-3">
+				<button class="pd-btn-secondary" type="button" 
+					wicket:id="cancel">
+					<i class="fas fa-ban icon-margin"></i> <wicket:message
+								key="cancel"></wicket:message>
+				</button>
+			</div>
+		</div>
+		
+	</form>
+
+	<div class="table-responsive mt-5 pl-5 pr-5 pb-4">
+		<table class="table text-center" wicket:id="divTable">
+			<thead class="text-upppercase table-head">
+				<tr>
+					<th><wicket:message
+							key="styleNumber"></wicket:message></th>
+					<th><wicket:message
+							key="season"></wicket:message></th>
+					<th><wicket:message
+							key="silhouette"></wicket:message></th>
+					<th><wicket:message
+							key="styleName"></wicket:message></th>
+					<th><wicket:message
+							key="statusName"></wicket:message></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr wicket:id="table">
+					<td><a wicket:id="linkStyle"><span class="btn-action" wicket:id="styleNumber"></span></a></td>
+					<td wicket:id="seasonName"></td>
+					<td wicket:id="silhouetteName"></td>
+					<td wicket:id="styleName"></td>
+					<td wicket:id="statusName"></td>					
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr class="text-upppercase">
+					<th wicket:id="navigator" colspan="5">&nbsp;</th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
 		
 		
 

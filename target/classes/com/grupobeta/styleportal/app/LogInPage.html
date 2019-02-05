@@ -19,6 +19,10 @@
 <link rel="stylesheet" href="css/default-css.css">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/nivo-slider.css">
+<link rel="stylesheet" href="css/default-theme.css">
+<link rel="stylesheet" href="css/bar.css">
+<link rel="stylesheet" href="css/slide.css">
 <link rel="stylesheet" href="css/custom.css">
 <link rel="stylesheet" href="css/GB-Icons.css" type="text/css">
 <!-- modernizr css -->
@@ -34,53 +38,58 @@
 		wicket:id="feedback"></div>
 
 	<div class="login-area login-bg">
-		<div class="container">
 			<div class="login-box" wicket:id="divContainer">
 				<form wicket:id="form">
 					<div class="login-form-head">
-						<i class="gb-icon-logops"></i> Product Development Style Portal
+						<img class="logo-pd" src="images/bg/LogoPD.png" alt="LogoPD" />
+						<div class="logo-pd-text">Product Development Portal</div> 
 					</div>
 
 					<div class="login-form-body">
 						<div class="form-group">
-							<i class="ti-user"></i>&nbsp;&nbsp;<label class="col-form-label"
+							<i class="ti-user"></i>&nbsp;&nbsp;<label class="col-form-label text-color"
 								for="codUsuario"><wicket:message key="codUsuario"></wicket:message></label>
-							<input type="text" class="form-control" id="codUsuario"
+							<input type="text" class="form-control input-bg" id="codUsuario"
 								wicket:id="codUsuario">
 
 						</div>
 
 						<div class="form-group">
-							<i class="ti-lock"></i>&nbsp;&nbsp;<label class="col-form-label"
+							<i class="ti-lock"></i>&nbsp;&nbsp;<label class="col-form-label text-color"
 								for="password"><wicket:message key="password"></wicket:message></label><input
-								type="password" class="form-control" wicket:id="password"
+								type="password" class="form-control input-bg" wicket:id="password"
 								id="password">
 
 						</div>
 
 						<div class="form-group">
-							<i class="ti-book"></i>&nbsp;&nbsp;<label class="col-form-label"
+							<i class="ti-book"></i>&nbsp;&nbsp;<label class="col-form-label text-color"
 								for="language"><wicket:message key="language"></wicket:message></label>
-							<select class="form-control gbSelect" wicket:id="language"
+							<select class="form-control input-select-bg" wicket:id="language"
 								id="language"></select>
 						</div>
 
-						<div class="submit-btn-area">
-							<div class="form-example-int">
-								<button class="btn btn-flat btn-outline-primary mb-3"
+					
+						<div class="form-example-int mt-2">
+							
+							<div class="submit-btn-area mb-2">
+								<button class="pd-btn-primary"
 									wicket:id="submit">
-									<i class="ti-check"></i>Submit
-								</button>
-								<button type="reset" class="btn btn-flat btn-outline-dark mb-3">
-									<i class="ti-reload"></i> Reset
+									<i class="ti-check icon-margin"></i> Submit
 								</button>
 							</div>
+
+							<div class="submit-btn-area">
+								<button type="reset" class="pd-btn-secondary">
+									<i class="ti-reload icon-margin"></i> Reset
+								</button>
+							</div>
+
 						</div>
+				
 					</div>
 				</form>
 			</div>
-
-		</div>
 	</div>
 
 	<!-- jquery latest version -->
@@ -88,6 +97,7 @@
 	<!-- bootstrap 4 js -->
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.nivo.slider.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/metisMenu.min.js"></script>
 	<script src="js/jquery.slimscroll.min.js"></script>
@@ -96,7 +106,11 @@
 	<!-- others plugins -->
 	<script src="js/plugins.js"></script>
 	<script src="js/scripts.js"></script>
-
+    <script type="text/javascript">
+	    $(window).load(function() {
+	        $('#slider').nivoSlider();
+	    });
+    </script>
 </body>
 
 </html>
