@@ -27,22 +27,24 @@
 
 	<wicket:panel>
 		
-			<div class="row align-items-center">
-				<div class="col-md-6 col-sm-8 clearfix">
+			<div class="flex-container">
+				<div class="flex-item">
 					<div class="nav-btn pull-left">
 						<span></span> <span></span> <span></span>
 					</div>
-					<div class="search-box pull-left"></div>
+					<wicket:enclosure>
+						<div class="title-header" wicket:id="title"></div>
+					</wicket:enclosure>
 				</div>
-				<div class="col-md-6 col-sm-4 clearfix">
+			
+
+				<div class="flex-item">
 					<ul class="notification-area pull-right">
+						<li><span class="ti-user"></span><span class="input-clean" wicket:id="userName"></span></li>			
 						<li id="full-view"><i class="ti-fullscreen"></i></li>
 						<li id="full-view-exit"><i class="ti-zoom-out"></i></li>
-						<li><label><span class="ti-user"> </span><span
-								class="input-clean" wicket:id="userName"></span>
-						</label></li>
 						<li ><a title="Close Session"
-							class="btn btn-flat btn-outline-dark mb-3 btnLogin" wicket:id="logout"> <span
+							class="btn-close-session" wicket:id="logout"> <span
 								class="ti-power-off"
 								aria-hidden="true"></span>
 						</a></li>

@@ -26,63 +26,52 @@
 <body>
 	<wicket:extend>
 
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="card">
-					<div class="card-body">
-						<form id="form" wicket:id="form"
-							class="form-horizontal form-label-left">
+		
+		<form id="form" wicket:id="form">
 
-							<div class="form-group">
-								<label class="col-form-label col-md-3 col-sm-3 col-xs-12"
-									for="codUsuario"><wicket:message key="rol"></wicket:message>:
-								</label>
-
-								<div class="col-md-5">
-									<select class="form-control form-control-sm input-rounded" id="rol" wicket:id="rol"></select>
-								</div>
-							</div>
-
-
-							<div class="container-table">
-								<div class="table">
-									<table class="table table-condensed border-top-x1"
-										wicket:id="tableRefresh">
-										<thead>
-											<tr class="border-bottom">
-												<th><wicket:message key="user"></wicket:message></th>
-												<th><span><wicket:message key="actions"></wicket:message></span></th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td><input type="text" wicket:id="usuario"
-													class="form-control form-control-sm input-rounded" /></td>
-												<td><button form="form" type="submit"
-														class="btn btn-rounded">
-														<i class="fas fa-user-plus icons"></i>
-													</button></td>
-											</tr>
-											<tr wicket:id="table">
-												<td wicket:id="usuario"></td>
-												<td><a href="#" wicket:id="remove" title="Remove User"><i
-														class="fas fa-user-times icons"></i> </a></td>
-											</tr>
-										</tbody>
-										<tfoot>
-											<tr class="border-top">
-												<th>&nbsp;</th>
-												<th>&nbsp;</th>
-											</tr>
-										</tfoot>
-									</table>
-								</div>
-							</div>
-						</form>
-					</div>
+			<div class="flex-card ml-5">
+				<div class="col-sm-4 my-1">
+					<label class="label-input"
+						for="codUsuario"><wicket:message key="rol"></wicket:message>
+					</label>
+					<select class="input-text-light" id="rol" wicket:id="rol"></select>
 				</div>
 			</div>
-		</div>
+
+			<div class="table-responsive mt-3 pl-5 pr-5 pb-4 mb-3">
+				<table class="table text-center"
+					wicket:id="tableRefresh">
+					<thead class="text-upppercase table-head">
+						<tr class="border-bottom">
+							<th><wicket:message key="user"></wicket:message></th>
+							<th><span><wicket:message key="actions"></wicket:message></span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" wicket:id="usuario"
+								class="form-control form-control-sm input-rounded" /></td>
+							<td><button form="form" type="submit"
+									class="btn btn-rounded">
+									<i class="fas fa-user-plus icons"></i>
+								</button></td>
+						</tr>
+						<tr wicket:id="table">
+							<td wicket:id="usuario"></td>
+							<td><a class="pd-btn-action" href="#" wicket:id="remove" title="Remove User"><i
+									class="fas fa-user-times icons"></i> </a></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr class="border-top">
+							<th>&nbsp;</th>
+							<th>&nbsp;</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+
+		</form>
 
 
 	</wicket:extend>

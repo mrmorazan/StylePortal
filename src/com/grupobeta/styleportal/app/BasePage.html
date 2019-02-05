@@ -19,6 +19,10 @@
 <link rel="stylesheet" href="css/default-css.css">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/nivo-slider.css">
+<link rel="stylesheet" href="css/default-theme.css">
+<link rel="stylesheet" href="css/bar.css">
+<link rel="stylesheet" href="css/slide.css">
 <link rel="stylesheet" href="css/custom.css">
 <link rel="stylesheet" href="css/GB-Icons.css" type="text/css">
 <!-- modernizr css -->
@@ -31,7 +35,7 @@
 		<div class="loader"></div>
 	</div>
 
-	<div class="page-container">
+	<div class="page-container sbar_collapsed-close">
 		<!-- Menu Lateral-->
 		<div wicket:id="menuMain"></div>
 		<!-- Menu Lateral End-->
@@ -40,17 +44,17 @@
 			<div class="header-area" wicket:id="header"></div>
 			<!-- Header End-->
 
-			<div class="page-title-area-container" wicket:id="menu"></div>
+			<div class="page-title-area-container background-light" wicket:id="menu"></div>
 
 			<!-- FeedBack-->
-			<div class="row align-items-center">
+			<div class="align-items-center">
 				<div class="col-md-12">
 					<div wicket:id="feedback"></div>
 				</div>
 			</div>
 			<!-- FeedBack End-->
 			
-			<div class="main-content-inner mt-3">
+			<div class="main-content-inner">
 				<wicket:child />
 			</div>
 
@@ -104,6 +108,7 @@
 	<!-- bootstrap 4 js -->
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.nivo.slider.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/metisMenu.min.js"></script>
 	<script src="js/jquery.slimscroll.min.js"></script>
@@ -112,7 +117,11 @@
 	<!-- others plugins -->
 	<script src="js/plugins.js"></script>
 	<script src="js/scripts.js"></script>
-
+    <script type="text/javascript">
+	    $(window).load(function() {
+	        $('#slider').nivoSlider();
+	    });
+    </script>
 </body>
 
 </html>

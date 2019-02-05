@@ -10,14 +10,20 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 /*import org.apache.wicket.model.AbstractReadOnlyModel;*/
 /*import org.apache.wicket.request.resource.DynamicImageResource;*/
+import org.apache.wicket.model.Model;
 
 import com.grupobeta.styleportal.domain.Rol;
 
 
 public class HeaderPanel extends Panel {
 	private static final long serialVersionUID = 1L;
-
+	private boolean viewPanel;
+	
 	public HeaderPanel() {
+		this(false);
+	}
+	
+	public HeaderPanel(boolean viewPanel) {
 
 
 		super("header");
@@ -25,6 +31,7 @@ public class HeaderPanel extends Panel {
 
 		this.add(new Label("userName", StylePortalSession.get().getUsuario()!=null ? StylePortalSession.get().getUsuario().getCodUsuario() : StylePortalSession.get().isSignedIn() ? StylePortalSession.get().getCodUsuario() : "Bienvenido" ));
 
+		this.add(new Label("title", Model.of("Product Development Portal")).setVisible(viewPanel));
 		//Icono
 	/*	if(StockManSession.get().isSignedIn() && StockManSession.get().getFotoBase64()!=null){
 			NonCachingImage gbImageFromStringBase64 = new NonCachingImage("imagenIco", new AbstractReadOnlyModel<DynamicImageResource>() {

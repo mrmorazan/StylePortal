@@ -13,9 +13,14 @@ Table Of Contents
 --------------------------
 */
 
+@font-face {
+    font-family: 'RobotoCondensed';
+    src: url("fonts/Microsoft YaHei.ttf") format("truetype");
+}
+
 body {
     font-size: 14px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Microsoft YaHei', sans-serif;
 }
 
 h1,

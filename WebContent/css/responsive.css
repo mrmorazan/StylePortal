@@ -129,6 +129,7 @@
     .sbar_collapsed .sidebar-menu {
         width: 365px;
         left: 0;
+        z-index: 1100;
     }
     .minisidebar.main-menu {
         margin-right: 0;
@@ -138,17 +139,16 @@
         position: fixed;
         z-index: 99;
         left: 364px;
-        background: #303641;
         padding: 14px;
         top: 0;
         margin: 0;
     }
     .sbar_collapsed .nav-btn span {
-        background: #fffbfb;
+        background: #BDC2C6;
     }
     /* main content */
     .main-content-inner {
-        padding: 0 15px 50px;
+       /*  padding: 0 15px 50px; */
     }
     .page-container,
     .sbar_collapsed.page-container {
@@ -162,6 +162,7 @@
         flex: 0 0 33.333333%;
         max-width: 33.333333%;
     }
+
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -183,6 +184,7 @@
     .sbar_collapsed .sidebar-menu {
         width: 306px;
         left: 0;
+        z-index: 1100;
     }
     .minisidebar.main-menu {
         margin-right: 0;
@@ -192,17 +194,17 @@
         position: fixed;
         z-index: 99;
         left: 306px;
-        background: #303641;
+     /*    background: #303641; */
         padding: 14px;
         top: 0;
         margin: 0;
     }
     .sbar_collapsed .nav-btn span {
-        background: #fffbfb;
+        background: #BDC2C6;
     }
     /* main content */
     .main-content-inner {
-        padding: 0 15px 50px;
+        /* padding: 0 15px 50px; */
     }
     .page-container,
     .sbar_collapsed.page-container {
@@ -291,6 +293,7 @@
     .sbar_collapsed .sidebar-menu {
         width: 306px;
         left: 0;
+        z-index: 1100;
     }
     .minisidebar.main-menu {
         margin-right: 0;
@@ -300,13 +303,13 @@
         position: fixed;
         z-index: 99;
         left: 306px;
-        background: #303641;
+       /*  background: #303641; */
         padding: 14px;
         top: 0;
         margin: 0;
     }
     .sbar_collapsed .nav-btn span {
-        background: #fffbfb;
+        background: #BDC2C6;
     }
     .sbar_collapsed .metismenu li a span,
     .sbar_collapsed .metismenu li a:after,
@@ -315,7 +318,7 @@
     }
     /* main content */
     .main-content-inner {
-        padding: 0 15px 50px;
+        /* padding: 0 15px 50px; */
     }
     .page-container,
     .sbar_collapsed.page-container {
@@ -433,6 +436,7 @@
     .sbar_collapsed .sidebar-menu {
         width: 365px;
         left: 0;
+        z-index: 1100;
     }
     .minisidebar.main-menu {
         margin-right: 0;
@@ -442,17 +446,18 @@
         position: fixed;
         z-index: 99;
         left: 364px;
-        background: #303641;
+/*         background: #303641; */
         padding: 14px;
         top: 0;
         margin: 0;
+        
     }
     .sbar_collapsed .nav-btn span {
-        background: #fffbfb;
+        background: #BDC2C6;
     }
     /* main content */
     .main-content-inner {
-        padding: 0 15px 35px;
+       /*  padding: 0 15px 35px; */
     }
     .page-container,
     .sbar_collapsed.page-container {
@@ -526,7 +531,7 @@
         max-width: 100%;
     }
     .page-title-area-container{
-    	margin-top: 120px;
+    	margin-top: 31px;
     	font-size: 10px !important;
     }
 }
@@ -536,6 +541,7 @@
 @media (min-width: 240px) and (max-width: 479px) {
     /* dashboard one */
     /* sidebar */
+
     .sidebar-menu {
         position: fixed;
         left: -90%;
@@ -549,6 +555,7 @@
     .sbar_collapsed .sidebar-menu {
         width: 85%;
         left: 0;
+        z-index: 1100;
     }
     .minisidebar.main-menu {
         margin-right: 0;
@@ -559,16 +566,18 @@
         z-index: 99;
         right: 0;
         top: 0;
-        background: #303641;
+        left:inherit;
+     /*    background: #303641; */
         margin: 0;
         padding: 14px;
     }
     .sbar_collapsed .nav-btn span {
-        background: #fffbfb;
+        background: #BDC2C6;
     }
     /* main content */
     .main-content-inner {
-        padding: 0 15px 50px;
+       /*  padding: 0 15px 50px; */
+        /* padding: 0 0 100px 0; */
     }
     .page-container,
     .sbar_collapsed.page-container {
@@ -609,7 +618,7 @@
     }
     .page-title-area {
         padding: 10px 10px;
-        margin-top: 130px;
+        /* margin-top: 130px; */
         
     }
     .page-title{
