@@ -62,6 +62,8 @@
 				<value>com.grupobeta.styleportal.domain.CustomerPolyPm</value>
 				<value>com.grupobeta.styleportal.domain.StylePolyPm</value>
 				<value>com.grupobeta.styleportal.domain.SeasonPolyPm</value>
+				<value>com.grupobeta.styleportal.domain.MaterialPolyPm</value>
+				<value>com.grupobeta.styleportal.domain.DocumentPolyPm</value>
 			</list>
 		</property>
 		<property name="entityInterceptor">
@@ -71,7 +73,7 @@
 			<props>
 				<prop key="hibernate.default_schema">dbo</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
-				<prop key="hibernate.default_catalog">PolyIT</prop>
+				<prop key="hibernate.default_catalog">PolyGB</prop>
 			</props>
 		</property>
 	</bean>
@@ -131,6 +133,16 @@
 		class="com.grupobeta.styleportal.dao.hibernate.SeasonPolyPmDaoImpl">
 		<property name="sessionFactory" ref="sessionFactoryPoly" />
 	</bean>
+	
+	<bean id="materialPolyPmDao"
+		class="com.grupobeta.styleportal.dao.hibernate.MaterialPolyPmDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryPoly" />
+	</bean>
+	
+	<bean id="documentPolyPmDao"
+		class="com.grupobeta.styleportal.dao.hibernate.DocumentPolyPmDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryPoly" />
+	</bean>
 
 	<bean id="authenticatedLDAP" class="com.grupobeta.util.LoginLDAP"></bean>
 	<bean id="usuarioDADao"
@@ -158,6 +170,8 @@
 		<property name="customerPolyPmDao" ref="customerPolyPmDao" />
 		<property name="stylePolyPmDao" ref="stylePolyPmDao" />
 		<property name="seasonPolyPmDao" ref="seasonPolyPmDao" />
+		<property name="materialPolyPmDao" ref="materialPolyPmDao" />
+		<property name="documentPolyPmDao" ref="documentPolyPmDao" />
 	</bean>
 
 	<bean id="mantService"

@@ -19,6 +19,8 @@ import org.apache.wicket.settings.ExceptionSettings;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
 
+
+
 public class BaseApplication extends AuthenticatedWebApplication {
 	protected IModel<String> titleModel;
 
@@ -84,6 +86,8 @@ public class BaseApplication extends AuthenticatedWebApplication {
 		HttpServletRequest req = (HttpServletRequest)((WebRequest)StylePortalRequestCycle.get().getRequest()).getContainerRequest();
 		return RequestUtils.toAbsolutePath(req.getRequestURL().toString(), RequestUtils.toAbsolutePath(StylePortalRequestCycle.get().getUrlRenderer().getBaseUrl().getHost(), (String) StylePortalRequestCycle.get().urlFor(new RenderPageRequestHandler(new PageProvider(LogInPage.class)))));
 	}
+	
+	
 
 
 	public String getTitle() {

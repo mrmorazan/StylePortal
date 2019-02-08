@@ -9,12 +9,14 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
-import org.apache.wicket.markup.html.image.Image;
+import org.apache.wicket.markup.html.image.NonCachingImage;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.resource.DynamicImageResource;
 import org.apache.wicket.request.resource.IResource;
 
-public class RemoteImage extends Image {
+import com.grupobeta.styleportal.app.BaseApplication;
+
+public class RemoteImage extends NonCachingImage {
 
 	private static final long serialVersionUID = 1L;
 	/**  */
@@ -42,6 +44,9 @@ public class RemoteImage extends Image {
 			@Override
 			protected byte[] getImageData(Attributes attributes) {
 				try {
+					if(urlModel.getObject().contains("%")) {
+						urlModel.getObject().replace("%", "%25");
+					}
 					URL url = new URL(urlModel.getObject());
 					URLConnection uc = (URLConnection) url.openConnection();
 
@@ -81,7 +86,7 @@ public class RemoteImage extends Image {
 						uc.getInputStream().close();
 					}
 
-				} catch (IOException e) {
+				} catch (Exception e) {
 					
 					InputStream targetStream = null;
 					try {
@@ -103,7 +108,29 @@ public class RemoteImage extends Image {
 
 						return buffer.toByteArray();
 					} catch (Exception e1) {
+						try {
+							String path ="";
+							javax.servlet.ServletContext context = ((org.apache.wicket.protocol.http.WebApplication) BaseApplication.get()).getServletContext();
+							path =  context.getRealPath("img"+File.separator+"notAvailableImage.png");
 						
+							
+							File file = new File(path);
+							
+							targetStream = new FileInputStream(file);
+							ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+
+							int nRead;
+							byte[] data = new byte[16384];
+
+							while ((nRead = targetStream.read(data, 0, data.length)) != -1) {
+							  buffer.write(data, 0, nRead);
+							}
+
+							return buffer.toByteArray();
+						
+						} catch (Exception e3) {
+							
+						}
 					} finally {
 						try {
 							targetStream.close();
@@ -112,7 +139,7 @@ public class RemoteImage extends Image {
 						}
 					}
 
-				}
+				} 
 
 				return new byte[] {};
 			}

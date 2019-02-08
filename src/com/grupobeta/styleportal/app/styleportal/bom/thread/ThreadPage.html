@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Style Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/png"
+	href="images/icon/favicon.ico">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/themify-icons.css">
+<link rel="stylesheet" href="css/metisMenu.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/slicknav.min.css">
+<!-- others css -->
+<link rel="stylesheet" href="css/typography.css">
+<link rel="stylesheet" href="css/default-css.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/custom.css">
+<!-- modernizr css -->
+<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+	<wicket:extend>
+		<div class="page-title-area-bom">
+			<h4 class="page-title pull-left">
+				<wicket:message key="title">Style Portal</wicket:message>
+			</h4>
+		</div>
+
+		<div class="table-responsive mt-5 pl-5 pr-5 pb-4">
+			<table class="table text-center">
+				<thead class="text-upppercase table-head">
+					<tr class="border-bottom">
+						<th><wicket:message key="thread"></wicket:message></th>
+						<th><wicket:message key="description"></wicket:message></th>
+						<th><wicket:message key="bodyPart"></wicket:message></th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr wicket:id="tableThread">
+						<td wicket:id="partNumber"></td>
+						<td wicket:id="description"></td>
+						<td wicket:id="bodyPart"></td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr class="text-upppercase text-center">
+						<th wicket:id="navigator" colspan="3">&nbsp;</th>
+						
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+
+	</wicket:extend>
+	<!-- jquery latest version -->
+	<script src="js/vendor/jquery-2.2.4.min.js"></script>
+	<!-- bootstrap 4 js -->
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/metisMenu.min.js"></script>
+	<script src="js/jquery.slimscroll.min.js"></script>
+	<script src="js/jquery.slicknav.min.js"></script>
+
+	<!-- others plugins -->
+	<script src="js/plugins.js"></script>
+	<script src="js/scripts.js"></script>
+
+</body>
+
+</html>

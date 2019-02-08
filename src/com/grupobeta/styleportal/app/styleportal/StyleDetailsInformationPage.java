@@ -2,11 +2,15 @@ package com.grupobeta.styleportal.app.styleportal;
 
 import java.io.File;
 
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.image.ContextImage;
+import org.apache.wicket.markup.html.link.ExternalLink;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.Model;
 
+import com.grupobeta.styleportal.app.styleportal.bom.fabric.FabricPage;
 import com.grupobeta.styleportal.domain.StylePolyPm;
 import com.grupobeta.wicket.RemoteImage;
 
@@ -14,15 +18,33 @@ public class StyleDetailsInformationPage extends StylePortalBasePage<StylePolyPm
 	private static final long serialVersionUID = 1L;
 	WebMarkupContainer divHeader;
 	WebMarkupContainer divDetails;
+	WebMarkupContainer divSections;
 	
 	public StyleDetailsInformationPage(StylePolyPm stylePolyPm) {
-		setSelectedObject(getTransService().loadStylePolyPm(stylePolyPm.getStyleId(), stylePolyPm.getSeasonName()));
+		this.addOrReplace(new StylePortalMenuPanel() {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void onComponentTag(ComponentTag tag) {
+				super.onComponentTag(tag);
+				tag.put("class", "page-title-area-container background-gray");
+			}
+			
+		});
 		
-		String pathOrigen = getSelectedObject().getUrlStyleImage2().replace("Styles", "");
+		String pathFinal = "";
+		try {
+			setSelectedObject(getTransService().loadStylePolyPm(stylePolyPm.getStyleId(), stylePolyPm.getSeasonName()));
+			
+			String pathOrigen = getSelectedObject().getUrlStyleImage2();
+			
+			pathOrigen = pathOrigen.replace("\\", File.separator);
+			
+			pathFinal = File.separator + "media" + File.separator + "WinFiles" + pathOrigen;
+		} catch (Exception e) {
+			
+		}
 		
-		pathOrigen = pathOrigen.replace("\\", File.separator);
-		
-		String pathFinal = File.separator + "media" + File.separator + "WinFiles" + pathOrigen;
 		
 	//	File file = new File(pathFinal);
 		
@@ -45,8 +67,27 @@ public class StyleDetailsInformationPage extends StylePortalBasePage<StylePolyPm
 		divDetails.add(new Label("gearLine", Model.of(getSelectedObject().getGearLine())));
 		divDetails.add(new Label("silhouette", Model.of(getSelectedObject().getSilhouetteName())));
 		
+		
+		String urlSpec = "http://gbsrvt11.grupobeta.com/ReportServer?%2FGBReports%2FPOLY-PM%2FSpecsReport&Season="+getSelectedObject().getSeasonName()+"&Style="+getSelectedObject().getStyleNumber()+"&rs%3AParameterLanguage=en-US";
+		
+		divSections = new WebMarkupContainer("divSections");
+		divSections.add(new ExternalLink("urlSpec", urlSpec));
+		
+		divSections.add(new Link<Void>("bomsPages") {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				setResponsePage(new FabricPage(getSelectedObject()));
+			}
+			
+			
+		});
+		
+		
 		this.add(divHeader);
 		this.add(divDetails);
+		this.add(divSections);
 			
 	}
 

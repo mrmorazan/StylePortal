@@ -3,6 +3,8 @@ package com.grupobeta.styleportal.service;
 import java.util.List;
 
 import com.grupobeta.styleportal.domain.CustomerPolyPm;
+import com.grupobeta.styleportal.domain.DocumentPolyPm;
+import com.grupobeta.styleportal.domain.MaterialPolyPm;
 import com.grupobeta.styleportal.domain.SeasonPolyPm;
 import com.grupobeta.styleportal.domain.StylePolyPm;
 
@@ -15,4 +17,9 @@ public interface TransaccionesService extends Service {
 	List<SeasonPolyPm> loadAllSeasonPolyPmFromStyle(String style);
 	
 	StylePolyPm loadStylePolyPm(int styleId, String season);
+	
+	List<MaterialPolyPm> loadListMaterialPolyPmFromCategory(StylePolyPm style, int categoryId);
+	
+	DocumentPolyPm loadDocumentPolyPmComponent(String component);
+	
 }

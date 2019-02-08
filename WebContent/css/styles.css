@@ -651,8 +651,8 @@
 	justify-content:center;
 	align-items:center;
 	align-content:center;
-	width: 150px;
-	height: 160px;
+	width: 180px;
+	height: 190px;
 	margin:5px;
 	-webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 	clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);	
@@ -724,7 +724,7 @@
 	margin-top:-80px;
 }
 .color{
-	color:var(--color);
+	color:var(--color) !important;
 }
 .background-color{
   background-color:var(--color);
@@ -1191,6 +1191,13 @@
 	position:relative;
 	top:-15px;
 	padding: 0 45px;
+} 
+.page-title-area-container-fixed{
+	position:fixed;
+	width:100%;
+	top:-15px;
+	padding: 0 45px;
+	z-index: 1000;
 } 
 
 .background-light{
