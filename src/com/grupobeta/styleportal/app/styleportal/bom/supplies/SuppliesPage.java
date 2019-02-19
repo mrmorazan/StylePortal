@@ -36,7 +36,7 @@ public class SuppliesPage extends SuppliesBasePage<MaterialPolyPm> {
 				
 				String pathFinal = "";
 				try {
-					String pathOrigen = documentPolyPm.getFilePath();
+					String pathOrigen = File.separator + documentPolyPm.getFilePath();
 					
 					pathOrigen = pathOrigen.replace("\\", File.separator);
 					

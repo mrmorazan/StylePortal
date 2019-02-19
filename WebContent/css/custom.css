@@ -365,14 +365,23 @@ div.tab-panel {
 
 .headerSpan {
 	border: solid 1px;
-	border-color: var(- -color-tertiary);
+	border-color: var(--color-tertiary);
 	font-size: 13px;
 	float: right;
 	margin-top: -10px;
 	padding: 5px;
 	border-radius: 10px 10px 10px 10px;
-	background-color: var(- -color);
-	color: var(- -font-color);
+	background-color: var(--color);
+	color: var(--font-color);
+}
+.header-btn{
+	display: flex;
+}
+.header-btn:hover {
+	background-color: inherit;
+}
+.header-btn:hover .pd-header-title{
+	color:var(--color) !important;
 }
 
 /*div wicket-modal*/
@@ -1116,6 +1125,317 @@ input:checked + .labelSwitch:after {
 }
 
 .width-100{
-	width=100px;
+	width:100px;
 }
+
+.flowchart-generate-container {
+	width:150px;
+	position: absolute;
+	right: 0;
+	margin-top:-10px;
+}
+
+.flowchart-generate-container a {
+	border:2px solid #444;
+	border-radius:5px;
+	padding: 7px 10px;
+	font-size:12px;
+	color:#444;
+}
+.flowchart-generate-container a:hover {
+	color:#fff;
+	border: 2px solid var(--color);
+}
+
+.flowchart-container {
+	position:relative;
+	width: 50%;
+	margin:0 auto;
+	top:0;
+	padding-left:45px;
+	padding-bottom: 50px;
+}
+
+
+.flowchart-element {
+  margin: 0 auto;
+  text-align: center;
+  background-color: red;
+  width: 1px;
+  
+}
+
+.svg-flow {
+	position: absolute;
+	
+}
+
+.flowchart-element-init {
+	position:relative;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	width: 150px;	
+	color:#ededed !important;
+	height: 75px;
+	font-size: 14px;
+	margin: 3px auto;
+	background-color: var(--color);
+	-webkit-clip-path: ellipse(50% 40% at 50% 50%);
+	clip-path: ellipse(50% 40% at 50% 50%);
+	transition:all 0.5s;
+}
+.flowchart-element-init:hover {
+	background-color: #435465;
+	color:#EDEDED !important;
+		box-shadow: 2px 2px 20px #777;
+	font-size: 15px;
+}
+
+.flowchart-element-finish {
+	position:relative;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	width: 150px;	
+	color:#ededed !important;
+	height: 75px;
+	font-size: 14px;
+	margin: 10px auto;
+	padding: 0;
+	background-color: var(--color);
+	/*margin-top: 5px;*/
+	margin-bottom: 50px;
+	-webkit-clip-path: ellipse(50% 35% at 50% 50%);
+	clip-path: ellipse(50% 35% at 50% 50%);
+	transition:all 0.5s;
+}
+.flowchart-element-finish:hover {
+	background-color: #435465;
+	color:#EDEDED !important;
+		box-shadow: 2px 2px 20px #777;
+	font-size: 15px;
+}
+
+.flowchart-element-task {
+	position:relative;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	text-align:center;
+	width: 150px;	
+	color:var(--color) !important;
+	height: 75px;
+	font-size: 12px;
+	border-radius: 3px;
+	margin: 0 auto;
+	border:2px solid var(--color);
+	transition:all 0.5s;
+}
+
+.flowchart-element-task:hover {
+	background-color: var(--color);
+	box-shadow: 2px 2px 20px #777;
+	color:#EDEDED !important;
+	font-size: 14px;
+}
+
+.flowchart-element-decision {
+	position:relative;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	width: 150px;	
+	color:#ededed !important;
+	height: 150px;
+	font-size: 12px;
+	margin: 0 auto;
+	border:2px solid var(--color);
+	background-color: var(--color);
+	-webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+	clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+	padding: 7px; 2px;
+	transition:all 0.5s;
+}
+.flowchart-element-decision:hover {
+	background-color: #435465;
+	color:#EDEDED !important;
+	font-size: 13px;
+		box-shadow: 2px 2px 20px #777;
+}
+
+.flowchart-element-position-two {
+	margin-left: 250px;
+}
+
+/*JS plumb*/
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.window {
+}
+
+    .window:hover {
+        cursor: pointer;
+    }
+
+.menu {
+    background-color: #EFEFEF;
+    border: 1px solid #346789;
+    box-shadow: 2px 2px 5px #AAAAAA;
+    color: black;
+    min-height: 3em;
+    position: absolute;
+    min-width: 5em;
+}
+
+.task {
+    background-color: #EEEEEF;
+    border: 1px solid #346789;
+    border-radius: 0.5em;
+    box-shadow: 2px 2px 5px #AAAAAA;
+    color: black;
+    min-height: 3em;
+    position: absolute;
+    min-width: 5em;
+}
+
+.point {
+    background-color: #333333;
+    border: 1px solid #AAAAAA;
+    border-radius: 50%;
+    box-shadow: 2px 2px 5px #AAAAAA;
+    color: white;
+    min-width: 50px;
+    min-height: 30px;
+    font-size: 11pt;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+}
+
+    .point:hover {
+        box-shadow: 2px 2px 19px #AAAAAA;
+    }
+
+.decision {
+    transform: rotate(-45deg);
+    overflow: hidden;
+    border: 1px solid #346789;
+    border-radius: 0.3em;
+    color: black;
+    backface-visibility: hidden;
+    background: none repeat scroll 0 0 #F4F4F4;
+    box-shadow: 0 0 0 1px #CCCCCC;
+    color: #000000;
+    display: block;
+    height: 80px;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    width: 80px;
+}
+
+    .decision .ctrl_container {
+        display: table-cell;
+        height: 80px;
+        padding: 0 10px;
+        text-align: center;
+        transform: rotate(45deg);
+        vertical-align: middle;
+        width: 80px;
+    }
+
+.button {
+    text-align: center;
+    border: 1px solid;
+    margin: 5px;
+}
+
+    .button:hover {
+        cursor: pointer;
+    }
+
+.menu_button {
+    padding: 5px;
+}
+
+    .menu_button:hover {
+        background-color: #AAAAAA;
+        color: black;
+    }
+
+.button_add {
+    background-color: #00CC00;
+    float: left;
+    border-radius: 50%;
+    box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
+    padding: 2px;
+    height: 25px;
+    width: 25px;
+    color: grey;
+}
+
+    .button_add:hover {
+        background-color: #00AA00;
+        color: black;
+    }
+
+.button_remove {
+    font-size: 9pt;
+    color: darkgrey;
+    border-radius: 30%;
+    box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
+    padding: 5px;
+    min-width: 10px;
+    max-width: 15px;
+    text-align: center;
+}
+
+.task .button_remove {
+    float: right;
+}
+
+.decision .button_remove {
+    margin: auto auto;
+}
+
+.button_remove:hover {
+    background-color: darkred;
+    color: white;
+}
+
+.menu_button_container {
+    margin: 5px;
+}
+
+.ctrl_container {
+    margin: 5px;
+    height: 40px;
+}
+
+.details_container {
+    margin: 5px;
+    min-height: 40px;
+}
+
+.detail_label {
+    font-size: 9pt;
+    color: grey;
+}
+
+.detail_text {
+    width: 80px;
+    font-size: 10pt;
+}
+
+._jsPlumb_connector, ._jsPlumb_startpoint {
+    cursor: pointer;
+}
+
 

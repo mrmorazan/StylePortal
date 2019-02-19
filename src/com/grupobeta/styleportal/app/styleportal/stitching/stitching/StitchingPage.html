@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Style Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/png"
+	href="images/icon/favicon.ico">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/themify-icons.css">
+<link rel="stylesheet" href="css/metisMenu.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/slicknav.min.css">
+<!-- others css -->
+<link rel="stylesheet" href="css/typography.css">
+<link rel="stylesheet" href="css/default-css.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/custom.css">
+<!-- modernizr css -->
+<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+	<wicket:extend>
+		<div class="page-title-area-bom">
+			<h4 class="page-title pull-left">
+				<wicket:message key="title">Style Portal</wicket:message>
+			</h4>
+		</div>
+
+		<div class="table-responsive mt-5 pl-5 pr-5 pb-4">
+			<table class="table text-center">
+				<thead class="text-upppercase table-head">
+					<tr class="border-bottom">
+						<th><wicket:message key="sequence"></wicket:message></th>
+						<th><wicket:message key="instructionName"></wicket:message></th>
+						<th><wicket:message key="operationCode"></wicket:message></th>
+						<th><wicket:message key="operation"></wicket:message></th>
+						<th><wicket:message key="machine"></wicket:message></th>
+						<th><wicket:message key="width"></wicket:message></th>
+						<th><wicket:message key="comments"></wicket:message></th>
+						<th><wicket:message key="stitchType"></wicket:message></th>
+						<th><wicket:message key="spi"></wicket:message></th>
+						<th><wicket:message key="threadText"></wicket:message></th>
+						<th><wicket:message key="notes"></wicket:message></th>
+						<th><wicket:message key="image"></wicket:message></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr wicket:id="tableStitching">
+						<td wicket:id="sequence"></td>
+						<td wicket:id="instructionName"></td>
+						<td wicket:id="operationCode"></td>
+						<td wicket:id="operation"></td>
+						<td wicket:id="machine"></td>
+						<td wicket:id="width"></td>
+						<td wicket:id="comments"></td>
+						<td wicket:id="stitchType"></td>
+						<td wicket:id="spi"></td>
+						<td wicket:id="threadText"></td>
+						<td wicket:id="notes"></td>
+						<td class="td-center">
+							<div class="item-image">
+								<img wicket:id="remoteImage" class="style-image" />
+							</div>
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr class="text-upppercase text-center">
+						<th wicket:id="navigator" colspan="12">&nbsp;</th>
+						
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+
+	</wicket:extend>
+	<!-- jquery latest version -->
+	<script src="js/vendor/jquery-2.2.4.min.js"></script>
+	<!-- bootstrap 4 js -->
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/metisMenu.min.js"></script>
+	<script src="js/jquery.slimscroll.min.js"></script>
+	<script src="js/jquery.slicknav.min.js"></script>
+
+	<!-- others plugins -->
+	<script src="js/plugins.js"></script>
+	<script src="js/scripts.js"></script>
+
+</body>
+
+</html>

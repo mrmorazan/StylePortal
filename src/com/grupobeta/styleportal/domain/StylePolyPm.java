@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
+import javax.persistence.Transient;
 
 @Entity
 @NamedNativeQueries({
@@ -69,6 +70,7 @@ public class StylePolyPm extends DomainObject {
 	private String gearLine;
 	private String urlStyleImage;
 	private String urlStyleImage2;
+	private CustomerPolyPm customerPolyPm;
 	
 	@Id
 	@Column(name="StyleID", nullable=false, unique=true)
@@ -215,8 +217,14 @@ public class StylePolyPm extends DomainObject {
 		this.urlStyleImage2 = urlStyleImage2;
 	}
 	
+	@Transient
+	public CustomerPolyPm getCustomerPolyPm() {
+		return customerPolyPm;
+	}
+	public void setCustomerPolyPm(CustomerPolyPm customerPolyPm) {
+		this.customerPolyPm = customerPolyPm;
+	}
 	
-	
-	
+		
 
 }

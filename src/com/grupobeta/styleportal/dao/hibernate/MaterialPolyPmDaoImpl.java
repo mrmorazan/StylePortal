@@ -50,6 +50,7 @@ public class MaterialPolyPmDaoImpl extends AbstractHibernateDaoImpl<MaterialPoly
 		}
 				 
 			sql += "AND cc.ComponentCategoryID = :category ";
+			sql += "Order by bp.BodyPart ";
 			
 			Query query = getSession().createSQLQuery(sql).addEntity(MaterialPolyPm.class);
 			query.setParameter("styleNumber", style.getStyleNumber());

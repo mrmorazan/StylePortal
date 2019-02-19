@@ -102,6 +102,7 @@ public class StylesPolyPmPage extends StylePortalBasePage<StylePolyPm> {
 					@Override
 					public void onClick(AjaxRequestTarget target) {
 						if(item.getModelObject().getStatusId()>=44 && item.getModelObject().getStatusId()<=64) {
+							item.getModelObject().setCustomerPolyPm(customerPolyPm);
 							setResponsePage(new StyleDetailsInformationPage(item.getModelObject()));
 						} else {
 							String msj;

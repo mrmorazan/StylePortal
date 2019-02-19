@@ -2967,10 +2967,12 @@ table.dataTable thead td {
 }
 .logo-pd{
 	position:absolute;
-	left:10px;
-	top:10px;
+	left:-25px;
+	top:15px;
 	width: 130px;
 	height: 130px;
+	font-size: 50px;
+	color: var(--color);
 }
 .logo-pd-text{
 	position:absolute;

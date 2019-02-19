@@ -11,6 +11,8 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.Model;
 
 import com.grupobeta.styleportal.app.styleportal.bom.fabric.FabricPage;
+import com.grupobeta.styleportal.app.styleportal.stitching.stitching.StitchingPage;
+import com.grupobeta.styleportal.app.styleportal.workflow.worktask.WorkTaskPage;
 import com.grupobeta.styleportal.domain.StylePolyPm;
 import com.grupobeta.wicket.RemoteImage;
 
@@ -35,8 +37,9 @@ public class StyleDetailsInformationPage extends StylePortalBasePage<StylePolyPm
 		String pathFinal = "";
 		try {
 			setSelectedObject(getTransService().loadStylePolyPm(stylePolyPm.getStyleId(), stylePolyPm.getSeasonName()));
+			getSelectedObject().setCustomerPolyPm(stylePolyPm.getCustomerPolyPm());
 			
-			String pathOrigen = getSelectedObject().getUrlStyleImage2();
+			String pathOrigen = File.separator + getSelectedObject().getUrlStyleImage2();
 			
 			pathOrigen = pathOrigen.replace("\\", File.separator);
 			
@@ -82,6 +85,24 @@ public class StyleDetailsInformationPage extends StylePortalBasePage<StylePolyPm
 			}
 			
 			
+		});
+		
+		divSections.add(new Link<Void>("stitching") {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				setResponsePage(new StitchingPage(getSelectedObject()));
+			}
+		});
+		
+		divSections.add(new Link<Void>("workflow") {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				setResponsePage(new WorkTaskPage(getSelectedObject()));
+			}
 		});
 		
 		

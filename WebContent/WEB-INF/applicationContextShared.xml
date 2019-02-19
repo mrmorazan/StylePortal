@@ -64,6 +64,8 @@
 				<value>com.grupobeta.styleportal.domain.SeasonPolyPm</value>
 				<value>com.grupobeta.styleportal.domain.MaterialPolyPm</value>
 				<value>com.grupobeta.styleportal.domain.DocumentPolyPm</value>
+				<value>com.grupobeta.styleportal.domain.InstructionPolyPm</value>
+				<value>com.grupobeta.styleportal.domain.WorkTaskPolyPm</value>
 			</list>
 		</property>
 		<property name="entityInterceptor">
@@ -143,6 +145,16 @@
 		class="com.grupobeta.styleportal.dao.hibernate.DocumentPolyPmDaoImpl">
 		<property name="sessionFactory" ref="sessionFactoryPoly" />
 	</bean>
+	
+	<bean id="instructionPolyPmDao"
+		class="com.grupobeta.styleportal.dao.hibernate.InstructionPolyPmDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryPoly" />
+	</bean>
+	
+	<bean id="workTaskPolyPmDao"
+		class="com.grupobeta.styleportal.dao.hibernate.WorkTaskPolyPmDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryPoly" />
+	</bean>
 
 	<bean id="authenticatedLDAP" class="com.grupobeta.util.LoginLDAP"></bean>
 	<bean id="usuarioDADao"
@@ -172,6 +184,8 @@
 		<property name="seasonPolyPmDao" ref="seasonPolyPmDao" />
 		<property name="materialPolyPmDao" ref="materialPolyPmDao" />
 		<property name="documentPolyPmDao" ref="documentPolyPmDao" />
+		<property name="instructionPolyPmDao" ref="instructionPolyPmDao" />
+		<property name="workTaskPolyPmDao" ref="workTaskPolyPmDao" />
 	</bean>
 
 	<bean id="mantService"

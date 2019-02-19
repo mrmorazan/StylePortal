@@ -4,14 +4,18 @@ import java.util.List;
 
 import com.grupobeta.styleportal.dao.CustomerPolyPmDao;
 import com.grupobeta.styleportal.dao.DocumentPolyPmDao;
+import com.grupobeta.styleportal.dao.InstructionPolyPmDao;
 import com.grupobeta.styleportal.dao.MaterialPolyPmDao;
 import com.grupobeta.styleportal.dao.SeasonPolyPmDao;
 import com.grupobeta.styleportal.dao.StylePolyPmDao;
+import com.grupobeta.styleportal.dao.WorkTaskPolyPmDao;
 import com.grupobeta.styleportal.domain.CustomerPolyPm;
 import com.grupobeta.styleportal.domain.DocumentPolyPm;
+import com.grupobeta.styleportal.domain.InstructionPolyPm;
 import com.grupobeta.styleportal.domain.MaterialPolyPm;
 import com.grupobeta.styleportal.domain.SeasonPolyPm;
 import com.grupobeta.styleportal.domain.StylePolyPm;
+import com.grupobeta.styleportal.domain.WorkTaskPolyPm;
 import com.grupobeta.styleportal.service.TransaccionesService;
 
 public class TransaccionesServiceImpl extends AbstractHibernateServiceImpl implements TransaccionesService {
@@ -20,9 +24,25 @@ public class TransaccionesServiceImpl extends AbstractHibernateServiceImpl imple
 	private SeasonPolyPmDao seasonPolyPmDao;
 	private MaterialPolyPmDao materialPolyPmDao;
 	private DocumentPolyPmDao documentPolyPmDao;
+	private InstructionPolyPmDao instructionPolyPmDao;
+	private WorkTaskPolyPmDao workTaskPolyPmDao;
 	
-	
-	
+	public WorkTaskPolyPmDao getWorkTaskPolyPmDao() {
+		return workTaskPolyPmDao;
+	}
+
+	public void setWorkTaskPolyPmDao(WorkTaskPolyPmDao workTaskPolyPmDao) {
+		this.workTaskPolyPmDao = workTaskPolyPmDao;
+	}
+
+	public InstructionPolyPmDao getInstructionPolyPmDao() {
+		return instructionPolyPmDao;
+	}
+
+	public void setInstructionPolyPmDao(InstructionPolyPmDao instructionPolyPmDao) {
+		this.instructionPolyPmDao = instructionPolyPmDao;
+	}
+
 	public DocumentPolyPmDao getDocumentPolyPmDao() {
 		return documentPolyPmDao;
 	}
@@ -92,6 +112,21 @@ public class TransaccionesServiceImpl extends AbstractHibernateServiceImpl imple
 	@Override
 	public DocumentPolyPm loadDocumentPolyPmComponent(String component) {
 		return getDocumentPolyPmDao().loadDocumentPolyPmComponent(component);
+	}
+
+	@Override
+	public List<InstructionPolyPm> loadInstructionsForStyle(StylePolyPm style) {
+		return getInstructionPolyPmDao().loadInstructionsForStyle(style);
+	}
+
+	@Override
+	public DocumentPolyPm loadDocumentPolyPmInstruction(StylePolyPm style, InstructionPolyPm instruction) {
+		return getDocumentPolyPmDao().loadDocumentPolyPmInstruction(style, instruction);
+	}
+
+	@Override
+	public List<WorkTaskPolyPm> loadWorkTaskFromStyleSeason(StylePolyPm style) {
+		return getWorkTaskPolyPmDao().loadWorkTaskFromStyleSeason(style);
 	}
 	
 	

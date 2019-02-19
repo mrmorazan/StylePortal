@@ -5,11 +5,14 @@ import java.io.File;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.image.ContextImage;
+import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.Model;
 
 import com.grupobeta.styleportal.app.styleportal.StyleDetailsInformationPage;
 import com.grupobeta.styleportal.app.styleportal.bom.fabric.FabricPage;
+import com.grupobeta.styleportal.app.styleportal.stitching.stitching.StitchingPage;
+import com.grupobeta.styleportal.app.styleportal.workflow.worktask.WorkTaskPage;
 import com.grupobeta.styleportal.component.MenuPanel;
 import com.grupobeta.styleportal.domain.StylePolyPm;
 import com.grupobeta.wicket.RemoteImage;
@@ -21,7 +24,7 @@ public class BOMMenuPanel extends MenuPanel {
 		
 		String pathFinal = "";
 		try {
-			String pathOrigen = style.getUrlStyleImage2();
+			String pathOrigen = File.separator + style.getUrlStyleImage2();
 			
 			pathOrigen = pathOrigen.replace("\\", File.separator);
 			
@@ -31,13 +34,9 @@ public class BOMMenuPanel extends MenuPanel {
 		}
 		
 		WebMarkupContainer	divHeader = new WebMarkupContainer("divHeader");
-		divHeader.add(new Label("styleNumber", Model.of(style.getStyleNumber())));
-		divHeader.add(new Label("seasonName", Model.of(style.getSeasonName())));
-		divHeader.add(new Label("url", Model.of(style.getUrlStyleImage())));
-		divHeader.add(new Label("url2", Model.of(pathFinal)));
-		divHeader.add(!style.getUrlStyleImage().equals("0") ? new RemoteImage("remoteImage", Model.of(style.getUrlStyleImage()), pathFinal) : new ContextImage("remoteImage", "img/notAvailableImage.png"));
 		
-		divHeader.add(new Link<Void>("backToDetail") {
+		Link<Void> back;
+		divHeader.add(back = new Link<Void>("backToDetail") {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -47,6 +46,18 @@ public class BOMMenuPanel extends MenuPanel {
 			
 		});
 		
+		back.add(new Label("styleNumber", Model.of(style.getStyleNumber())));
+		back.add(new Label("seasonName", Model.of(style.getSeasonName())));
+		back.add(new Label("url", Model.of(style.getUrlStyleImage())));
+		back.add(new Label("url2", Model.of(pathFinal)));
+		back.add(!style.getUrlStyleImage().equals("0") ? new RemoteImage("remoteImage", Model.of(style.getUrlStyleImage()), pathFinal) : new ContextImage("remoteImage", "img/notAvailableImage.png"));
+		
+		
+		String urlSpec = "http://gbsrvt11.grupobeta.com/ReportServer?%2FGBReports%2FPOLY-PM%2FSpecsReport&Season="+style.getSeasonName()+"&Style="+style.getStyleNumber()+"&rs%3AParameterLanguage=en-US";
+		divHeader.add(new ExternalLink("urlSpec", urlSpec));
+		
+		
+		
 		divHeader.add(new Link<Void>("fabric") {
 			private static final long serialVersionUID = 1L;
 
@@ -55,6 +66,24 @@ public class BOMMenuPanel extends MenuPanel {
 				setResponsePage(new FabricPage(style));
 			}
 			
+		});
+		
+		divHeader.add(new Link<Void>("stitching") {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				setResponsePage(new StitchingPage(style));
+			}
+		});
+		
+		divHeader.add(new Link<Void>("workflow") {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				setResponsePage(new WorkTaskPage(style));
+			}
 		});
 		
 		this.add(divHeader);
