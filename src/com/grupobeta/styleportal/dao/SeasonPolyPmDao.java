@@ -13,4 +13,9 @@ public interface SeasonPolyPmDao extends Dao<SeasonPolyPm, Integer> {
 	@Transactional(value="transactionManagerPoly", rollbackFor = { GBException.class, GBMultipleException.class })
 	List<SeasonPolyPm> loadAllSeasonPolyPmFromStyle(String style);
 	
+	@Transactional(value="transactionManagerPoly", rollbackFor = { GBException.class, GBMultipleException.class })
+	List<SeasonPolyPm> loadAllSeasonPolyPmFromCustomer(String customerCode);
+	
+	@Transactional(value="transactionManagerPoly", rollbackFor = { GBException.class, GBMultipleException.class })
+	SeasonPolyPm loadSeason(int seasonId);
 }

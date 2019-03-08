@@ -11,6 +11,7 @@ import com.grupobeta.styleportal.app.admin.RolesPage;
 import com.grupobeta.styleportal.app.admin.UsersPage;
 import com.grupobeta.styleportal.app.mantenimiento.AdminRolPage;
 import com.grupobeta.styleportal.app.styleportal.CustomersPage;
+import com.grupobeta.styleportal.app.styleportal.PackingManualPage;
 
 public class MenuMain extends Panel {
 	private static final long serialVersionUID = 1L;
@@ -73,6 +74,15 @@ public class MenuMain extends Panel {
 			@Override
 			public void onClick() {
 				setResponsePage(CustomersPage.class);
+			}
+		});
+		
+		this.add(new Link<Void>("packingManual") {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				setResponsePage(PackingManualPage.class);
 			}
 		});
 

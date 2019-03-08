@@ -12,6 +12,12 @@
 
 	<jee:jndi-lookup resource-ref="true"
 		jndi-name="/jdbc/Poly" id="dsPoly" />
+		
+	<jee:jndi-lookup resource-ref="true"
+		jndi-name="/jdbc/BAM" id="dsBAM" />	
+	
+	<jee:jndi-lookup resource-ref="true"
+		jndi-name="/jdbc/PPS" id="dataSourcePPS" />
 
 	<bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
@@ -40,6 +46,7 @@
 				<value>com.grupobeta.styleportal.domain.Rol</value>
 				<value>com.grupobeta.styleportal.domain.Language</value>
 				<value>com.grupobeta.styleportal.domain.Dictionary</value>
+				<value>com.grupobeta.styleportal.domain.PackingManual</value>
 			</list>
 		</property>
 		<property name="entityInterceptor">
@@ -79,8 +86,47 @@
 			</props>
 		</property>
 	</bean>
-
-
+	
+	<bean id="sessionFactoryBAM"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dsBAM" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.grupobeta.styleportal.domain.ArteBam</value>
+				<value>com.grupobeta.styleportal.domain.ImagenBam</value>
+				<value>com.grupobeta.styleportal.domain.ImagenTallaBAM</value>
+				<value>com.grupobeta.styleportal.domain.ColorBam</value>
+				<value>com.grupobeta.styleportal.domain.TecnicaBam</value>
+			</list>
+		</property>
+		<property name="entityInterceptor">
+			<bean class="com.grupobeta.styleportal.domain.AuditInterceptor" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.default_schema">dbo</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+				<prop key="hibernate.default_catalog">BAMBeta</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="sessionFactoryPPS"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSourcePPS" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.grupobeta.styleportal.domain.PpsUsuario</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.default_schema">dbo</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+				<!--<prop key="hibernate.default_catalog">PPS</prop> -->
+			</props>
+		</property>
+	</bean>
 
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
@@ -95,6 +141,20 @@
 	</bean>
 	<tx:annotation-driven
 		transaction-manager="transactionManagerPoly" />
+	
+	<bean id="transactionManagerBAM"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactoryBAM" />
+	</bean>
+	<tx:annotation-driven
+		transaction-manager="transactionManagerBAM" />	
+		
+	<bean id="transactionManagerPPS"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactoryPPS" />
+	</bean>
+	<tx:annotation-driven
+		transaction-manager="transactionManagerPPS" />		
 
 	<bean id="genericDao"
 		class="com.grupobeta.styleportal.dao.hibernate.GenericDaoImpl">
@@ -118,6 +178,11 @@
 
 	<bean id="dictionaryDao"
 		class="com.grupobeta.styleportal.dao.hibernate.DictionaryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="packingManualDao"
+		class="com.grupobeta.styleportal.dao.hibernate.PackingManualDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
@@ -155,6 +220,36 @@
 		class="com.grupobeta.styleportal.dao.hibernate.WorkTaskPolyPmDaoImpl">
 		<property name="sessionFactory" ref="sessionFactoryPoly" />
 	</bean>
+	
+	<bean id="arteBamDao"
+		class="com.grupobeta.styleportal.dao.hibernate.ArteBamDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryBAM" />
+	</bean>
+	
+	<bean id="imagenBamDao"
+		class="com.grupobeta.styleportal.dao.hibernate.ImagenBamDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryBAM" />
+	</bean>
+	
+	<bean id="imagenTallaBamDao"
+		class="com.grupobeta.styleportal.dao.hibernate.ImagenTallaBAMDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryBAM" />
+	</bean>
+	
+	<bean id="colorBamDao"
+		class="com.grupobeta.styleportal.dao.hibernate.ColorBamDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryBAM" />
+	</bean>
+	
+	<bean id="tecnicaBamDao"
+		class="com.grupobeta.styleportal.dao.hibernate.TecnicaBamDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryBAM" />
+	</bean>
+	
+	<bean id="ppsUsuarioDao"
+		class="com.grupobeta.styleportal.dao.hibernate.PpsUsuarioDaoImpl">
+		<property name="sessionFactory" ref="sessionFactoryPPS" />
+	</bean>
 
 	<bean id="authenticatedLDAP" class="com.grupobeta.util.LoginLDAP"></bean>
 	<bean id="usuarioDADao"
@@ -172,6 +267,7 @@
 		<property name="usuarioDao" ref="usuarioDao" />
 		<property name="languageDao" ref="languageDao" />
 		<property name="dictionaryDao" ref="dictionaryDao" />
+		<property name="ppsUsuarioDao" ref="ppsUsuarioDao" />
 	</bean>
 
 	<bean id="transService"
@@ -186,6 +282,12 @@
 		<property name="documentPolyPmDao" ref="documentPolyPmDao" />
 		<property name="instructionPolyPmDao" ref="instructionPolyPmDao" />
 		<property name="workTaskPolyPmDao" ref="workTaskPolyPmDao" />
+		<property name="packingManualDao" ref="packingManualDao" />
+		<property name="arteBamDao" ref="arteBamDao" />
+		<property name="imagenBamDao" ref="imagenBamDao" />
+		<property name="imagenTallaBAMDao" ref="imagenTallaBamDao" />
+		<property name="colorBamDao" ref="colorBamDao" />
+		<property name="tecnicaBamDao" ref="tecnicaBamDao"/>
 	</bean>
 
 	<bean id="mantService"

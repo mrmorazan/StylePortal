@@ -24,7 +24,7 @@ public class ErrorPage extends BasePage {
 	PrintWriter pw = new PrintWriter(sw);
 	ex.printStackTrace(pw);
 
-	if((!(ex instanceof UnauthorizedInstantiationException)) && (!(ex instanceof PageExpiredException))){
+	if((!(ex instanceof UnauthorizedInstantiationException)) && (!(ex instanceof PageExpiredException)) && (!(ex instanceof IllegalStateException))){
 		logger.error("Error message", ex);
 	}
 

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Style Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/png"
+	href="images/icon/favicon.ico">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/themify-icons.css">
+<link rel="stylesheet" href="css/metisMenu.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/slicknav.min.css">
+<!-- others css -->
+<link rel="stylesheet" href="css/typography.css">
+<link rel="stylesheet" href="css/default-css.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/custom.css">
+<!-- modernizr css -->
+<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+	<wicket:extend>
+		<div class="page-title-area-bom">
+			<h4 class="page-title pull-left">
+				<wicket:message key="title">Style Portal</wicket:message>
+			</h4>
+		</div>
+		
+		<div class="image-detail-container">
+			<div class="image-detail" wicket:id="divImagen">
+				<div class="image-container">
+					<a class="image-container-a" href="#" wicket:id="view">
+		    			<img class="thumb" wicket:id="imagenBam" alt="View" title="View Image" />
+ 					</a>
+				</div>
+				<div class="image-detail-info">
+					<div class="info">
+						<label class="info-label">
+							<wicket:message key="placement"></wicket:message>
+						</label>
+						<span class="info-value" wicket:id="ubicacion"></span>
+					</div>
+					
+					<div class="info">
+						<label class="info-label">
+							<wicket:message key="printMode"></wicket:message>
+						</label>
+						<span class="info-value" wicket:id="printMode"></span>
+					</div>
+					
+					<div class="info">
+						<label class="info-label">
+							<wicket:message key="alto"></wicket:message>
+						</label>
+						<span class="info-value" wicket:id="alto"></span>
+					</div>
+					
+					<div class="info">
+						<label class="info-label">
+							<wicket:message key="ancho"></wicket:message>
+						</label>
+						<span class="info-value" wicket:id="ancho"></span>
+					</div>
+					
+				</div>
+				<div class="image-detail-info">
+					<div class="info-container">
+						<label class="info-title">
+							<wicket:message key="instructions"></wicket:message>
+						</label>
+						<span class="info-text-area" wicket:id="instructions"></span>
+					</div>				
+				</div>
+			</div>
+			<div class="size-composition-detail-container">
+				<div class="size-detail">
+					<div class="table-responsive mt-5 pl-5 pr-5 pb-4" wicket:id="divTallas">
+						<table class="table text-center">
+							<thead class="text-upppercase table-head">
+								<tr class="border-bottom">
+									<th><wicket:message key="size"></wicket:message></th>
+									<th><wicket:message key="positioning"></wicket:message></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr wicket:id="tableTallas">
+									<td wicket:id="talla"></td>
+									<td wicket:id="posicionamiento"></td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr class="text-upppercase text-center">
+									<th wicket:id="navigator" colspan="2">&nbsp;</th>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+				<div class="composition">
+					<div class="color-table">
+						<div class="table-responsive mt-5 pl-5 pr-5 pb-4" wicket:id="divColores">
+							<table class="table text-center">
+								<thead class="text-upppercase table-head">
+									<tr class="border-bottom">
+										<th><wicket:message key="colorCode"></wicket:message></th>
+										<th><wicket:message key="colorName"></wicket:message></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr wicket:id="tableColores">
+										<td wicket:id="colorCode"></td>
+										<td wicket:id="colorName"></td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr class="text-upppercase text-center">
+										<th wicket:id="navigator" colspan="2">&nbsp;</th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+					<div class="techniques-table">
+						<div class="table-responsive mt-5 pl-5 pr-5 pb-4" wicket:id="divTecnicas">
+							<table class="table text-center">
+								<thead class="text-upppercase table-head">
+									<tr class="border-bottom">
+										<th><wicket:message key="tecnicaName"></wicket:message></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr wicket:id="tableTecnicas">
+										<td wicket:id="tecnicaName"></td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr class="text-upppercase text-center">
+										<th wicket:id="navigator" colspan="1">&nbsp;</th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</wicket:extend>
+	<!-- jquery latest version -->
+	<script src="js/vendor/jquery-2.2.4.min.js"></script>
+	<!-- bootstrap 4 js -->
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/metisMenu.min.js"></script>
+	<script src="js/jquery.slimscroll.min.js"></script>
+	<script src="js/jquery.slicknav.min.js"></script>
+
+	<!-- others plugins -->
+	<script src="js/plugins.js"></script>
+	<script src="js/scripts.js"></script>
+
+</body>
+
+</html>

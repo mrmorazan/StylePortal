@@ -26,19 +26,53 @@
 <body>
 
 	<wicket:panel>
-		
-			<div class="flex-container">
-				<div class="flex-item">
-					<div class="nav-btn pull-left">
-						<span></span> <span></span> <span></span>
-					</div>
-					<wicket:enclosure>
-						<div class="title-header" wicket:id="title"></div>
-					</wicket:enclosure>
-				</div>
-			
 
-				<div class="flex-item">
+		<div class="flex-container">
+			<div class="flex-item">
+				<div class="nav-btn pull-left">
+					<span></span> <span></span> <span></span>
+				</div>
+				<wicket:enclosure>
+					<div class="title-header" wicket:id="title"></div>
+				</wicket:enclosure>
+			</div>
+
+			<div class="top-menu-right">
+				<div class="user-loggedin">
+					<div class="user-loggedin-icon">
+						<wicket:enclosure child="photoUserAlt">
+							<i wicket:id="photoUserAlt" class="fa fa-user-alt"></i>
+						</wicket:enclosure>
+						
+						<wicket:enclosure child="photoUser">
+							<img class="user-photo" wicket:id="photoUser" />
+						</wicket:enclosure>
+						
+					</div>
+					<div class="user-loggedin-description">
+						<div class="user-loggedin-name">
+							<span class="user-loggedin-status"></span><span wicket:id="userCode"></span>
+						</div>
+						<div class="user-loggedin-stall">
+							<span wicket:id="userName"></span>
+						</div>
+					</div>
+
+				</div>
+				<div class="container-bnt-area">
+					<ul class="notification-area">
+						<li id="full-view"><i class="ti-fullscreen"></i></li> <li
+							id="full-view-exit"><i class="ti-zoom-out"></i></li>
+					</ul>
+					<a data-toggle="tooltip" data-placement="bottom"
+						title="Close Session" class="btn-sign-out" wicket:id="logout">
+						<i class="fas fa-power-off" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+
+				<!-- <div class="flex-item">
 					<ul class="notification-area pull-right">
 						<li><span class="ti-user"></span><span class="input-clean" wicket:id="userName"></span></li>			
 						<li id="full-view"><i class="ti-fullscreen"></i></li>
@@ -50,12 +84,11 @@
 						</a></li>
 
 					</ul>
-				</div>
-			</div>
-		
+				</div> -->
+			
 	</wicket:panel>
 
-<!-- jquery latest version -->
+	<!-- jquery latest version -->
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
 	<!-- bootstrap 4 js -->
 	<script src="js/popper.min.js"></script>

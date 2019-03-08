@@ -49,5 +49,34 @@ public class CustomerPolyPmDaoImpl extends AbstractHibernateDaoImpl<CustomerPoly
 		
 		return resultados;
 	}
+
+	@Override
+	public CustomerPolyPm loadCustoemrPolyPM(int customerId) {
+		CustomerPolyPm resultado = new CustomerPolyPm();
+		
+		String sql = "SELECT " +
+				"a.AddressID " +
+				", a.CompanyNumber " +
+				", 'C'+a.CompanyNumber 'PortalCode' " +
+				", a.CompanyName " +
+				"FROM Addresses a " +
+				"WHERE a.AddrCategoryID = 2 ";
+				
+				
+					sql +="AND a.AddressID = :customerId ";
+				 
+				
+				sql +="ORDER BY a.CompanyNumber";
+		
+		Query query = getSession().createSQLQuery(sql).addEntity(CustomerPolyPm.class);
+		query.setParameter("customerId", customerId);
+		 
+		
+		if(query.uniqueResult()!=null) {
+			resultado = (CustomerPolyPm) (query.uniqueResult());
+		}
+		
+		return resultado;
+	}
 	
 }

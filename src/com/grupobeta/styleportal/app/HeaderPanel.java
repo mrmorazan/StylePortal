@@ -3,7 +3,9 @@ package com.grupobeta.styleportal.app;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
+import org.apache.wicket.markup.html.WebComponent;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.image.NonCachingImage;
 /*import org.apache.wicket.markup.html.image.ContextImage;
 import org.apache.wicket.markup.html.image.NonCachingImage;*/
 import org.apache.wicket.markup.html.link.Link;
@@ -11,91 +13,61 @@ import org.apache.wicket.markup.html.panel.Panel;
 /*import org.apache.wicket.model.AbstractReadOnlyModel;*/
 /*import org.apache.wicket.request.resource.DynamicImageResource;*/
 import org.apache.wicket.model.Model;
+import org.apache.wicket.request.resource.DynamicImageResource;
+import org.apache.wicket.request.resource.IResource;
 
+import com.grupobeta.styleportal.domain.PpsUsuario;
 import com.grupobeta.styleportal.domain.Rol;
 
 
 public class HeaderPanel extends Panel {
 	private static final long serialVersionUID = 1L;
-	private boolean viewPanel;
-	
+		
 	public HeaderPanel() {
 		this(false);
 	}
 	
 	public HeaderPanel(boolean viewPanel) {
-
-
 		super("header");
+		PpsUsuario ppsUsuario = StylePortalSession.get().getPPSUsuario();
+		
 		this.add(new Label("welcome", StylePortalSession.get().isSignedIn() ? StylePortalSession.get().getCodUsuario() : "Bienvenido" ));
 
-		this.add(new Label("userName", StylePortalSession.get().getUsuario()!=null ? StylePortalSession.get().getUsuario().getCodUsuario() : StylePortalSession.get().isSignedIn() ? StylePortalSession.get().getCodUsuario() : "Bienvenido" ));
+		this.add(new Label("userCode", StylePortalSession.get().getUsuario()!=null ? StylePortalSession.get().getUsuario().getCodUsuario() : StylePortalSession.get().isSignedIn() ? StylePortalSession.get().getCodUsuario() : "Bienvenido" ));
+		
+		this.add(new Label("userName", StylePortalSession.get().getUsuario()!=null ? StylePortalSession.get().getUsuario().getNombre() : ppsUsuario!=null ? ppsUsuario.getNombreempleado() : ""));
 
 		this.add(new Label("title", Model.of("Product Development Portal")).setVisible(viewPanel));
 		//Icono
-	/*	if(StockManSession.get().isSignedIn() && StockManSession.get().getFotoBase64()!=null){
-			NonCachingImage gbImageFromStringBase64 = new NonCachingImage("imagenIco", new AbstractReadOnlyModel<DynamicImageResource>() {
+		
+		
+		
+			this.add(new NonCachingImage("photoUser") {
 				private static final long serialVersionUID = 1L;
-
+				
 				@Override
-				public DynamicImageResource getObject() {
-					DynamicImageResource dir = new DynamicImageResource() {
+				protected IResource getImageResource() {
+					return new DynamicImageResource() {
 						private static final long serialVersionUID = 1L;
 
 						@Override
 						protected byte[] getImageData(Attributes attributes) {
-							return StockManSession.get().getFotoBase64();
+							return ppsUsuario!=null ? ppsUsuario.getFotoCompress() : new byte[0];
 						}
 					};
-					dir.setFormat("image/png");
-					return dir;
 				}
-
-			});
-
-			gbImageFromStringBase64.setMarkupId("imagenIco");
-			gbImageFromStringBase64.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
-			this.add(gbImageFromStringBase64);
-		} else {
-			ContextImage image = new ContextImage("imagenIco",
-					"img/userIcon.png");
-			image.setMarkupId("imagenIco");
-			image.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
-			this.add(image);
-		}
-
-
-		//Imagen
-		if(StockManSession.get().isSignedIn() && StockManSession.get().getFotoBase64()!=null){
-			NonCachingImage gbImageFromStringBase64 = new NonCachingImage("imagen", new AbstractReadOnlyModel<DynamicImageResource>() {
-				private static final long serialVersionUID = 1L;
-
+			
 				@Override
-				public DynamicImageResource getObject() {
-					DynamicImageResource dir = new DynamicImageResource() {
-						private static final long serialVersionUID = 1L;
-
-						@Override
-						protected byte[] getImageData(Attributes attributes) {
-							return StockManSession.get().getFotoBase64();
-						}
-					};
-					dir.setFormat("image/png");
-					return dir;
+				public boolean isVisible() {
+					return ppsUsuario!=null;
 				}
-
+				
 			});
+		
+			this.add(new WebComponent("photoUserAlt").setVisible(ppsUsuario==null));
+		
+		
 
-			gbImageFromStringBase64.setMarkupId("image");
-			gbImageFromStringBase64.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
-			this.add(gbImageFromStringBase64);
-		} else {
-			ContextImage image = new ContextImage("imagen",
-					"img/userIcon.png");
-			image.setMarkupId("image");
-			image.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
-			this.add(image);
-		}*/
 
 		Roles rol = StylePortalSession.get().getRoles();
 		final boolean noHasUserInApp = rol.hasRole(Rol.USUARIO);

@@ -15,4 +15,10 @@ public interface DocumentPolyPmDao extends Dao<DocumentPolyPm, Integer> {
 	
 	@Transactional(value="transactionManagerPoly", rollbackFor = { GBException.class, GBMultipleException.class })
 	DocumentPolyPm loadDocumentPolyPmInstruction(StylePolyPm style, InstructionPolyPm instruction);
+	
+	@Transactional(value="transactionManagerPoly", rollbackFor = { GBException.class, GBMultipleException.class })
+	DocumentPolyPm loadDocumentPolyPmSpec(StylePolyPm style);
+	
+	@Transactional(value="transactionManagerPoly", rollbackFor = { GBException.class, GBMultipleException.class })
+	DocumentPolyPm loadDocumentPolyPmTechPack(StylePolyPm style);
 }

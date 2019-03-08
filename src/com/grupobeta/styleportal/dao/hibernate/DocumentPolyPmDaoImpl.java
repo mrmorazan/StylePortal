@@ -88,6 +88,89 @@ public class DocumentPolyPmDaoImpl extends AbstractHibernateDaoImpl<DocumentPoly
 		
 		return documentPolyPm;
 	}
+
+	@Override
+	public DocumentPolyPm loadDocumentPolyPmSpec(StylePolyPm style) {
+		DocumentPolyPm documentPolyPm = null;
+		
+		String sql ="SELECT TOP 1 " +
+				"d.DocumentID " +
+				",d.FilePath " +
+				",d.TagID " +
+				",d.FileName " +
+				",d.FileType " +
+				",ISNULL(REPLACE('file://GBSRVT39/Poly-Docs/PolyGB/Documents/'+ d.FilePath , '\\' , '/'),0) URLComponent " +
+				"FROM Documents d " +
+				"WHERE (d.StatusID IN (42, 62, 80, 100)) " +
+				"AND (d.FileType IN ('\\', 'bmp', 'gif', 'htm', 'jpeg', 'jpg', 'pdf', 'txt', 'xls', 'docx', 'rpt', 'xlsx', 'png')) " +
+				"AND (d.FilePath LIKE :specUrl )" +
+				"AND d.TagID = 6 " +
+				"AND d.FileType <> '\' " +
+				"AND d.FileVersion = 0 " +
+				"";
+		
+		
+		
+		Query query = getSession().createSQLQuery(sql).addEntity(DocumentPolyPm.class);
+		
+		String val = "";
+		if(style.getSeasonName()!=null) {
+			val ="Styles\\"+style.getStyleNumber()+style.getCustomerPolyPm().getCompanyNumber()+style.getSeasonName()+"\\%";	
+		} else {
+			val ="Styles\\"+style.getStyleNumber()+style.getCustomerPolyPm().getCompanyNumber()+"\\%";
+		}
+	
+		query.setParameter("specUrl", val);
+		
+		if(query.uniqueResult()!=null) {
+			documentPolyPm = (DocumentPolyPm) query.uniqueResult();
+		}
+		
+		return documentPolyPm;
+	}
+
+	@Override
+	public DocumentPolyPm loadDocumentPolyPmTechPack(StylePolyPm style) {
+		DocumentPolyPm documentPolyPm = null;
+		
+		String sql ="SELECT TOP 1 " +
+				"d.DocumentID " +
+				",d.FilePath " +
+				",d.TagID " +
+				",d.FileName " +
+				",d.FileType " +
+				",ISNULL(REPLACE('file://GBSRVT39/Poly-Docs/PolyGB/Documents/'+ d.FilePath , '\\' , '/'),0) URLComponent " +
+				"FROM Documents d " +
+				"WHERE (d.StatusID IN (42, 62, 80, 100)) " +
+				"AND (d.FileType IN ('\\', 'bmp', 'gif', 'htm', 'jpeg', 'jpg', 'pdf', 'txt', 'xls', 'docx', 'rpt', 'xlsx', 'png')) " +
+				"AND (d.FilePath LIKE :techpackUrl )" +
+				"AND d.TagID = 49 " +
+				"AND d.FileType <> '\' " +
+				"AND d.FileVersion = 0 " +
+				"";
+		
+		
+		
+		Query query = getSession().createSQLQuery(sql).addEntity(DocumentPolyPm.class);
+		
+		String val = "";
+		if(style.getSeasonName()!=null) {
+			val ="Styles\\"+style.getStyleNumber()+style.getCustomerPolyPm().getCompanyNumber()+style.getSeasonName()+"\\%";	
+		} else {
+			val ="Styles\\"+style.getStyleNumber()+style.getCustomerPolyPm().getCompanyNumber()+"\\%";
+		}
+		
+		
+		//String val = "ComponentLibrary\\"+component+"\\%";
+		
+		query.setParameter("techpackUrl", val);
+		
+		if(query.uniqueResult()!=null) {
+			documentPolyPm = (DocumentPolyPm) query.uniqueResult();
+		}
+		
+		return documentPolyPm;
+	}
 	
 	
 	

@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.hibernate.Query;
 
-import com.grupobeta.styleportal.app.StylePortalSession;
 import com.grupobeta.styleportal.dao.StylePolyPmDao;
 import com.grupobeta.styleportal.domain.CustomerPolyPm;
 import com.grupobeta.styleportal.domain.StylePolyPm;

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Style Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/png"
+	href="images/icon/favicon.ico">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/themify-icons.css">
+<link rel="stylesheet" href="css/metisMenu.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/slicknav.min.css">
+<!-- others css -->
+<link rel="stylesheet" href="css/typography.css">
+<link rel="stylesheet" href="css/default-css.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/custom.css">
+<!-- modernizr css -->
+<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+	<wicket:extend>
+		<wicket:enclosure child="formSearch">
+
+			<form wicket:id="formSearch">
+				<div class="flex-card ml-3">
+					<div class="col-sm-4 my-1">
+						<label class="label-input" for="customerPolyPm"><wicket:message
+								key="customerPolyPm"></wicket:message>: </label> <select
+							class="input-text-light" id="customerPolyPm"
+							wicket:id="customerPolyPm"></select>
+					</div>
+				</div>
+				<div class="flex-card ml-3">
+					<div class="col-sm-4 my-1">
+						<label class="label-input" for="seasonPolyPm"><wicket:message
+								key="seasonPolyPm"></wicket:message>: </label> <select
+							class="input-text-light" id="seasonPolyPm"
+							wicket:id="seasonPolyPm"></select>
+					</div>
+				</div>
+				<div class="flex-card ml-3 mt-2">
+					<div class="col-sm-4 my-1">
+						<label class="label-input" for="styles"><wicket:message
+								key="styles"></wicket:message></label> <input class="input-text-light"
+							type="text" id="styles" wicket:id="styles"
+							wicket:message="placeholder:placeholderStyle" />
+					</div>
+				</div>
+
+
+				<div class="flex-card ml-5">
+					<div class="submit-btn-area ml-3">
+						<button wicket:id="submit2" type="submit" class="pd-btn-primary">
+							<i class="fas fa-check icon-margin"></i>
+							<wicket:message key="search"></wicket:message>
+						</button>
+					</div>
+					<div class="submit-btn-area ml-3">
+						<button class="pd-btn-secondary" type="button" wicket:id="cancel2">
+							<i class="fas fa-ban icon-margin"></i>
+							<wicket:message key="clear"></wicket:message>
+						</button>
+					</div>
+				</div>
+			</form>
+
+		</wicket:enclosure>
+
+		<wicket:enclosure child="table">
+
+			<h4 class="header-title"></h4>
+			<div class="table-responsive mt-5 pl-5 pr-5 pb-4 mb-3">
+				<table class="table text-center">
+					<thead class="text-upppercase table-head">
+						<tr>
+							<th><wicket:message key="customerPolyPm"></wicket:message></th>
+							<th><wicket:message key="seasonPolyPm"></wicket:message></th>
+							<th><wicket:message key="styles"></wicket:message></th>
+							<th><wicket:message key="fileName"></wicket:message></th>
+							<th><wicket:message key="status"></wicket:message></th>
+							<th><a class="pd-btn-action" href="#" wicket:id="add"
+								title="Add"> <i class="fas fa-plus-circle icons"></i>
+							</a> <span><wicket:message key="actions"></wicket:message></span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr wicket:id="table">
+							<td wicket:id="polyCustomer"></td>
+							<td wicket:id="seasonName"></td>
+							<td wicket:id="styleNumber"></td>
+							<td><a wicket:id="linkAlfresco"><span
+									wicket:id="fileName"></span></a></td>
+							<td class="td-center"><img align="middle" wicket:id="estado"
+								width="18" height="18" /></td>
+							<td width="100px"><a href="#" wicket:id="edit"> <i
+									class="fas fa-edit icons"></i>
+							</a></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr class="text-upppercase ">
+							<th wicket:id="navigator" colspan="6">&nbsp;</th>
+
+						</tr>
+					</tfoot>
+
+				</table>
+			</div>
+		</wicket:enclosure>
+
+
+		<wicket:enclosure child="form">
+
+			<form wicket:id="form" class="form-horizontal form-label-left">
+
+				<div class="flex-card ml-5">
+					<div class="col-sm-4 my-1">
+						<label class="label-input" for="customerPolyPm"><wicket:message
+								key="customerPolyPm"></wicket:message>: </label> <select
+							class="input-text-light" id="customerPolyPm"
+							wicket:id="customerPolyPm"></select>
+					</div>
+				</div>
+
+				<div class="flex-card ml-5">
+					<div class="col-sm-4 my-1">
+						<label class="label-input" for="seasonPolyPm"><wicket:message
+								key="seasonPolyPm"></wicket:message>: </label> <select
+							class="input-text-light" id="seasonPolyPm"
+							wicket:id="seasonPolyPm"></select>
+					</div>
+				</div>
+
+
+				<div class="flex-card ml-5">
+					<div class="col-sm-4 my-1">
+						<label class="label-input" for="styleNumber"><wicket:message
+								key="styles"></wicket:message>: </label> <input class="input-text-light"
+							type="text" id="styleNumber" wicket:id="styleNumber"
+							wicket:message="placeholder:placeholderStyle" />
+					</div>
+				</div>
+
+
+				<div class="flex-card ml-5">
+					<div class="col-sm-4 my-1">
+						<label class="label-input" for="fileName"><wicket:message
+								key="fileName"></wicket:message>:</label> <input
+							class="input-text-light" type="text" id="fileName"
+							wicket:id="fileName" />
+					</div>
+				</div>
+
+				<div class="flex-card ml-5">
+					<div class="col-sm-4 my-1">
+						<label class="label-input" for="urlFile"><wicket:message
+								key="urlFile"></wicket:message>:</label> <input class="input-text-light"
+							type="text" id="urlFile" wicket:id="urlFile" />
+					</div>
+				</div>
+
+				<div class="flex-card ml-5">
+					<label for="status" class="label-input" data-toggle="tooltip"
+						title="Set Inactive or Active"><wicket:message
+							key="status"></wicket:message></label>
+					<div class="flex-item">
+						<input type="checkbox" name="checkbox" wicket:id="status"
+							id="switch"> <label for="switch" class="labelSwitch"
+							data-toggle="tooltip" title="Set Inactive or Active"><wicket:message
+								key="status"></wicket:message></label>
+					</div>
+				</div>
+
+
+				<div class="flex-card ml-5">
+					<div class="submit-btn-area ml-3">
+						<button wicket:id="submit" type="submit" class="pd-btn-primary">
+							<i class="fas fa-check icon-margin"></i>
+							<wicket:message key="submit"></wicket:message>
+						</button>
+					</div>
+					<div class="submit-btn-area ml-3">
+						<button class="pd-btn-secondary" type="button" wicket:id="cancel">
+							<i class="fas fa-ban icon-margin"></i>
+							<wicket:message key="cancel"></wicket:message>
+						</button>
+					</div>
+				</div>
+
+			</form>
+
+		</wicket:enclosure>
+
+
+
+	</wicket:extend>
+	<!-- jquery latest version -->
+	<script src="js/vendor/jquery-2.2.4.min.js"></script>
+	<!-- bootstrap 4 js -->
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/metisMenu.min.js"></script>
+	<script src="js/jquery.slimscroll.min.js"></script>
+	<script src="js/jquery.slicknav.min.js"></script>
+
+	<!-- others plugins -->
+	<script src="js/plugins.js"></script>
+	<script src="js/scripts.js"></script>
+
+</body>
+
+</html>

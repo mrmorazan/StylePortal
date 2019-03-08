@@ -21,6 +21,15 @@ public class StylePortalMenuPanel extends MenuPanel {
 			}
 		});
 		
+		this.add(new Link<Void>("packingConfig") {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				setResponsePage(PackingManualPage.class);
+			}
+		});
+		
 		
 		
 	}

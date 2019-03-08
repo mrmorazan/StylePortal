@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+
+<title>Demand Planning Tool</title>
+<meta charset="UTF-8">
+<title>Login Software Division</title>
+<link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
+<link rel="stylesheet" href="/css/custom.css" type="text/css">
+<link rel="stylesheet" href="/css/main.styles.css" type="text/css">
+<link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="/css/GB-Icons.css" type="text/css">
+
+<link rel="shortcut icon" href="dpt.ico" />
+</head>
+<body>
+	<wicket:panel>
+
+		<div wicket:id="productCard" class="product-card">
+			<div wicket:id="productFront" class="product-front">
+				<div class="shadow"></div>
+				<img wicket:id="remoteImage" class="product-image" />
+				<div class="image_overlay"></div>
+				<div class="view_details" onclick="viewDetails(this)"
+					wicket:id="viewDetail">View Details</div>
+				<div class="stats">
+					<div class="stats-container">
+						<span class="product_name" wicket:id="arte"></span>
+					</div>
+				</div>
+			</div>
+			<div wicket:id="productBack" class="product-back">
+				<div class="shadow"></div>
+				<div wicket:id="divCarousel" class="carousel">
+					<ul>
+						<li wicket:id="carousel"><a wicket:id="imageLink"> <img
+								wicket:id="imagenBam" /> <span wicket:id="ubicacion"></span>
+						</a></li>
+
+					</ul>
+					<div wicket:id="arrowsPerspective" class="arrows-perspective">
+						<div wicket:id="carouselPrev" class="carouselPrev">
+							<div class="y"></div>
+							<div class="x"></div>
+						</div>
+						<div wicket:id="carouselNext" class="carouselNext">
+							<div class="y"></div>
+							<div class="x"></div>
+						</div>
+					</div>
+				</div>
+				<div wicket:id="flipBack" onclick="flipClose(this)"
+					class="flip-back">
+					<div wicket:id="cy" class="cy"></div>
+					<div wicket:id="cx" class="cx"></div>
+				</div>
+			</div>
+		</div>
+
+
+	</wicket:panel>
+	<!-- jquery latest version -->
+	<script src="js/vendor/jquery-2.2.4.min.js"></script>
+	<!-- bootstrap 4 js -->
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/metisMenu.min.js"></script>
+	<script src="js/jquery.slimscroll.min.js"></script>
+	<script src="js/jquery.slicknav.min.js"></script>
+
+	<!-- others plugins -->
+	<script src="js/plugins.js"></script>
+	<script src="js/scripts.js"></script>
+	<script src="js/art.js"></script>
+
+</body>
+
+</html>

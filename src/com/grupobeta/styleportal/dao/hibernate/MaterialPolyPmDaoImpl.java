@@ -21,7 +21,7 @@ public class MaterialPolyPmDaoImpl extends AbstractHibernateDaoImpl<MaterialPoly
 		List<MaterialPolyPm> resultados = new ArrayList<MaterialPolyPm>();
 		
 		String sql= "SELECT " +
-				"rm.RawMaterialID " +
+				"rm.RawMaterialID +ROW_NUMBER() OVER(ORDER BY rm.RawMaterialID ASC) RawMaterialID " +
 				",rm.PartNumber " +
 				",rm.Description " +
 				",bp.BodyPart " +

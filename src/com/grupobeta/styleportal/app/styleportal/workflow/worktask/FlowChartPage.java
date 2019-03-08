@@ -27,6 +27,8 @@ public class FlowChartPage extends WorkTaskBasePage<WorkTaskPolyPm> {
 		
 		repeatingView = new RepeatingView("divFlowChart");
 		
+		if(!getTareas().isEmpty()) {
+			
 		
 		/*Inicio*/
 		String styleInit = "";
@@ -74,7 +76,7 @@ public class FlowChartPage extends WorkTaskBasePage<WorkTaskPolyPm> {
 	
 		repeatingView.add(new Label("finish", Model.of("Finish")).setMarkupId("finish").add(new AttributeModifier("class", "flowchart-element-finish")).add(new AttributeModifier("style", styleFin)));
 		
-		this.add(repeatingView);
+		
 		
 		this.add(new AjaxEventBehavior("load") {
 			private static final long serialVersionUID = 1L;
@@ -90,27 +92,32 @@ public class FlowChartPage extends WorkTaskBasePage<WorkTaskPolyPm> {
 						"                foldback:0.6" + 
 						"            } ] " + 
 						"]; "
-						+ " jsPlumb.setContainer($('#container'));  " ;
+					+ " jsPlumb.setContainer($('#container'));  " 
+					/* + " jsPlumb.setContainer(\"container\");  "*/ 
+					/* + " jsPlumb.setZoom(0.75);  "*/
+					 
+					
+					 ;
 				
-				script += generateConectorScript("start", String.valueOf(1), "Bottom", "Top") + " ";
+				script += generateConectorScript("start", String.valueOf(1), "Bottom", "Top", "blueLigthLine") + " ";
 				
 				for (WorkTaskPolyPm workTaskPolyPm : tareas) {
-					script += generateConectorScript(String.valueOf(workTaskPolyPm.getFlowTaskID()), String.valueOf(workTaskPolyPm.getNextTask()), "Bottom", "Top") + " ";
+					script += generateConectorScript(String.valueOf(workTaskPolyPm.getFlowTaskID()), String.valueOf(workTaskPolyPm.getNextTask()), "Bottom", "Top","blueLigthLine") + " ";
 					
 					if(workTaskPolyPm.getRejectTask()!=0) {
 						if(workTaskPolyPm.isDecision()) {
-							script += generateConectorScript(String.valueOf(workTaskPolyPm.getFlowTaskID()), String.valueOf(workTaskPolyPm.getRejectTask()), "Left", "Left") + " ";
+							script += generateConectorScript(String.valueOf(workTaskPolyPm.getFlowTaskID()), String.valueOf(workTaskPolyPm.getRejectTask()), "Left", "Left","redLine") + " ";
 						} else {
-							script += generateConectorScript(String.valueOf(workTaskPolyPm.getFlowTaskID()), String.valueOf(workTaskPolyPm.getRejectTask()), "Right", "Left") + " ";
+							script += generateConectorScript(String.valueOf(workTaskPolyPm.getFlowTaskID()), String.valueOf(workTaskPolyPm.getRejectTask()), "Right", "Left", "redLine") + " ";
 						}
 					}
 					
 					if(workTaskPolyPm.getAlternateTask()!=0) {
-						script += generateConectorScript(String.valueOf(workTaskPolyPm.getFlowTaskID()), String.valueOf(workTaskPolyPm.getAlternateTask()), "Right", "Top") + " ";
+						script += generateConectorScript(String.valueOf(workTaskPolyPm.getFlowTaskID()), String.valueOf(workTaskPolyPm.getAlternateTask()), "Right", "Top", "yellowLine") + " ";
 					}
 				}
 				
-				script += generateConectorScript(String.valueOf(getTareas().get(getTareas().size()-1).getFlowTaskID()), "finish", "Bottom", "Top") + " ";
+				script += generateConectorScript(String.valueOf(getTareas().get(getTareas().size()-1).getFlowTaskID()), "finish", "Bottom", "Top", "blueLigthLine") + " ";
 						
 				script += "}); ";
 				target.appendJavaScript(script);
@@ -118,16 +125,21 @@ public class FlowChartPage extends WorkTaskBasePage<WorkTaskPolyPm> {
 			}
 		});
 		
+		}
+		this.add(repeatingView);
+		
 		
 	}
 	
-	private String generateConectorScript(String nodoOrigen, String nodoFinal, String conectorOrigen, String conectorFinal) {
+	private String generateConectorScript(String nodoOrigen, String nodoFinal, String conectorOrigen, String conectorFinal, String color) {
 		String script =  "jsPlumb.connect({ "
 				+ "source:\""+nodoOrigen+"\", "
 				+ " target:\""+nodoFinal+"\", "
 				+ " anchors:[\""+conectorOrigen+"\", \""+conectorFinal+"\"], "
-				+ " connector:[ \"Flowchart\", {stub: [40, 60], cornerRadius: 5, alwaysRespectStubs: true}], "
-				+ " endpoint:\"Blank\" "
+				/*+ " connector:[ \"Flowchart\", {stub: [40, 60], cornerRadius: 5, alwaysRespectStubs: true}], "*/
+				+ " connector:[ \"Flowchart\", {stub: 30, cornerRadius: 5, curviness: 1, alwaysRespectStubs: true}], "
+				+ " endpoint:\"Blank\", "
+				+ " cssClass:\""+color+"\", "
 			/*	+ " overlays:[\"PlainArrow\", { location: 1, width: 15, length: 12 }] "*/ 
 			/*	+ " connectorOverlays: [ [ \"Arrow\", { width=20, length=20, location:0.8, foldback=0.623 } ] ] "*/
 				+ "}); "

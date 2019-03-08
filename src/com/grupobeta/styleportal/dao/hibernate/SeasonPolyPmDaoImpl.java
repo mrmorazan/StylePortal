@@ -34,6 +34,47 @@ public class SeasonPolyPmDaoImpl extends AbstractHibernateDaoImpl<SeasonPolyPm, 
 		
 		return resultados;
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<SeasonPolyPm> loadAllSeasonPolyPmFromCustomer(String customerCode) {
+		List<SeasonPolyPm> resultados = new ArrayList<SeasonPolyPm>();
+		
+		String sql = "SELECT DISTINCT s1.SeasonID " + 
+				",s1.SeasonName " + 
+				"FROM Styles s " + 
+				"INNER JOIN Seasons s1 ON s.SeasonID = s1.SeasonID " + 
+				"INNER JOIN Addresses a ON s.CustomerID = a.AddressID " + 
+				"WHERE a.CompanyNumber = :customerCode " + 
+				"AND s1.StatusID = 30 " + 
+				"AND s1.SeasonID <> 117298 "
+				+ "ORDER BY s1.SeasonID ";
+		
+		Query query = getSession().createSQLQuery(sql).addEntity(SeasonPolyPm.class);
+		query.setParameter("customerCode", customerCode);
+		
+		if(!query.list().isEmpty()) {
+			resultados = new ArrayList<SeasonPolyPm>(query.list());
+		}
+		
+		return resultados;
+	}
+
+	@Override
+	public SeasonPolyPm loadSeason(int seasonId) {
+		SeasonPolyPm resultado = new SeasonPolyPm();
+		
+		String sql = "SELECT s.SeasonID, s.SeasonName FROM Seasons s WHERE s.SeasonID = :seasonId";
+		
+		Query query = getSession().createSQLQuery(sql).addEntity(SeasonPolyPm.class);
+		query.setParameter("seasonId", seasonId);
+		
+		if(query.uniqueResult()!=null) {
+			resultado = (SeasonPolyPm)(query.uniqueResult());
+		}
+		
+		return resultado;
+	}
 	
 	
 	

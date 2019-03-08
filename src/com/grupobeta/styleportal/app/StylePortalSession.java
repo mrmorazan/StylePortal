@@ -15,6 +15,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import com.grupobeta.errors.GBException;
 import com.grupobeta.styleportal.StylePortalErrors;
 import com.grupobeta.styleportal.domain.AuditInterceptor;
+import com.grupobeta.styleportal.domain.PpsUsuario;
 import com.grupobeta.styleportal.domain.Rol;
 import com.grupobeta.styleportal.domain.Usuario;
 import com.grupobeta.styleportal.service.AdministracionService;
@@ -63,7 +64,7 @@ public class StylePortalSession extends AuthenticatedWebSession {
 	public boolean authenticate(String username, String password) {
 		setCodUsuario(null);
 		boolean flag = false;
-		if (!username.equals("admin")) {
+		/*if (!username.equals("admin")) {*/
 			try {
 				flag = getAdminService().authenticateDA(username, password);
 			} catch (GBException ex) {
@@ -80,7 +81,7 @@ public class StylePortalSession extends AuthenticatedWebSession {
 				GBException ex = StylePortalErrors.PASSWORD_INCORRECTO.newException();
 				error(ex.toString());
 			}
-		} else {
+		/*} else {
 			try {
 				getAdminService().authenticate(username, password);
 				setCodUsuario(username);
@@ -91,7 +92,7 @@ public class StylePortalSession extends AuthenticatedWebSession {
 						ex = StylePortalErrors.USUARIO_BLOQUEADO.newException();
 				error(ex.toString());
 			}
-		}
+		}*/
 
 		return flag;
 	}
@@ -208,6 +209,11 @@ public class StylePortalSession extends AuthenticatedWebSession {
 
 	public Usuario getUsuario() {
 		return isSignedIn() ? getAdminService().loadByCodUsuarioActivo(
+				this.getCodUsuario()) : null;
+	}
+	
+	public PpsUsuario getPPSUsuario() {
+		return isSignedIn() ? getAdminService().loadPpsUsuarioByCodUsuarioActivo(
 				this.getCodUsuario()) : null;
 	}
 

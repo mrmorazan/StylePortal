@@ -8,11 +8,13 @@ import com.grupobeta.errors.GBException;
 import com.grupobeta.styleportal.StylePortalErrors;
 import com.grupobeta.styleportal.dao.DictionaryDao;
 import com.grupobeta.styleportal.dao.LanguageDao;
+import com.grupobeta.styleportal.dao.PpsUsuarioDao;
 import com.grupobeta.styleportal.dao.RolDao;
 import com.grupobeta.styleportal.dao.UsuarioDADao;
 import com.grupobeta.styleportal.dao.UsuarioDao;
 import com.grupobeta.styleportal.domain.Dictionary;
 import com.grupobeta.styleportal.domain.Language;
+import com.grupobeta.styleportal.domain.PpsUsuario;
 import com.grupobeta.styleportal.domain.Rol;
 import com.grupobeta.styleportal.domain.Usuario;
 import com.grupobeta.styleportal.service.AdministracionService;
@@ -24,7 +26,16 @@ public class AdministracionServiceImpl extends AbstractHibernateServiceImpl impl
 	private UsuarioDADao usuarioDADao;
 	private LanguageDao languageDao;
 	private DictionaryDao dictionaryDao;
+	private PpsUsuarioDao ppsUsuarioDao;
 	
+	public PpsUsuarioDao getPpsUsuarioDao() {
+		return ppsUsuarioDao;
+	}
+
+	public void setPpsUsuarioDao(PpsUsuarioDao ppsUsuarioDao) {
+		this.ppsUsuarioDao = ppsUsuarioDao;
+	}
+
 	public DictionaryDao getDictionaryDao() {
 		return dictionaryDao;
 	}
@@ -164,7 +175,7 @@ public class AdministracionServiceImpl extends AbstractHibernateServiceImpl impl
 			builder.append(usuario.getCodUsuario());
 			builder.append(". Your password is the same as used to access in Windows.\n\n");
 
-			builder.append("To access the StockMan can use the following link:");
+			builder.append("To access the Product Development Portal can use the following link:");
 			builder.append(url);
 
 			message.setText(builder.toString());
@@ -261,6 +272,11 @@ public class AdministracionServiceImpl extends AbstractHibernateServiceImpl impl
 	@Override
 	public List<Dictionary> loadAllDictionaryForSearch(Language language, String originalText) {
 		return getDictionaryDao().loadAllDictionaryForSearch(language, originalText);
+	}
+
+	@Override
+	public PpsUsuario loadPpsUsuarioByCodUsuarioActivo(String codUsuario) {
+		return getPpsUsuarioDao().getUsuario(codUsuario);
 	}
 
 	

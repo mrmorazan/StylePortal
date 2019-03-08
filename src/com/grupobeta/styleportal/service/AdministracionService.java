@@ -8,6 +8,7 @@ import com.grupobeta.errors.GBException;
 import com.grupobeta.errors.GBMultipleException;
 import com.grupobeta.styleportal.domain.Dictionary;
 import com.grupobeta.styleportal.domain.Language;
+import com.grupobeta.styleportal.domain.PpsUsuario;
 import com.grupobeta.styleportal.domain.Rol;
 import com.grupobeta.styleportal.domain.Usuario;
 
@@ -71,5 +72,7 @@ public interface AdministracionService extends Service {
 	
 	@Transactional(rollbackFor = { GBException.class, GBMultipleException.class })
 	void deleteDictionary(Dictionary dictionary);
+	
+	PpsUsuario loadPpsUsuarioByCodUsuarioActivo(String codUsuario);
 	
 }

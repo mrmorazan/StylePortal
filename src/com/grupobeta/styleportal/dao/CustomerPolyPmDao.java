@@ -13,4 +13,7 @@ public interface CustomerPolyPmDao extends Dao<CustomerPolyPm, String> {
 	@Transactional(value="transactionManagerPoly", rollbackFor = { GBException.class, GBMultipleException.class })
 	List<CustomerPolyPm> loadAllCustomerActivesPolyPm(String customerCode, boolean inactives);
 	
+	@Transactional(value="transactionManagerPoly", rollbackFor = { GBException.class, GBMultipleException.class })
+	CustomerPolyPm loadCustoemrPolyPM(int customerId);
+	
 }

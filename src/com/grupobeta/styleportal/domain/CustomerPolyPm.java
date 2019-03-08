@@ -48,5 +48,38 @@ public class CustomerPolyPm extends DomainObject {
 	}
 	
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((companyName == null) ? 0 : companyName.hashCode());
+		result = prime * result + ((companyNumber == null) ? 0 : companyNumber.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CustomerPolyPm other = (CustomerPolyPm) obj;
+		if (companyName == null) {
+			if (other.companyName != null)
+				return false;
+		} else if (!companyName.equals(other.companyName))
+			return false;
+		if (companyNumber == null) {
+			if (other.companyNumber != null)
+				return false;
+		} else if (!companyNumber.equals(other.companyNumber))
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return getCompanyNumber() + " - " + getCompanyName();
+	}
 
 }

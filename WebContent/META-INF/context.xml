@@ -13,5 +13,17 @@
 		username="putilapp" type="javax.sql.DataSource" auth="Container" name="/jdbc/Poly" 
 		validationQuery="select 1"
 		/>
+		
+		<Resource maxTotal="30"
+		url="jdbc:jtds:sqlserver://jomardb.grupobeta.com:1433/BAMBeta;instance=MSSQLSERVER_REP;integratedSecurity=false;SelectMethod=cursor;"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver" password="gbb001"
+		username="bamapp" type="javax.sql.DataSource" auth="Container" name="/jdbc/BAM" 
+		validationQuery="select 1"
+		/>
+		
+		<Resource name="/jdbc/PPS" auth="Container" type="javax.sql.DataSource"
+		username="ppsapp" password="gbp001" driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		url="jdbc:jtds:sqlserver://10.1.0.48/PPS;integratedSecurity=false;SelectMethod=cursor;"
+		maxTotal="30" validationQuery="Select 1" />
 
 </Context>

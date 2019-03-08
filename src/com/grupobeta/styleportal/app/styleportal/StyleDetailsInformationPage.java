@@ -6,12 +6,14 @@ import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.image.ContextImage;
-import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.Model;
 
+import com.grupobeta.styleportal.app.styleportal.art.art.ArtPage;
 import com.grupobeta.styleportal.app.styleportal.bom.fabric.FabricPage;
+import com.grupobeta.styleportal.app.styleportal.spec.spec.SpecPage;
 import com.grupobeta.styleportal.app.styleportal.stitching.stitching.StitchingPage;
+import com.grupobeta.styleportal.app.styleportal.techpack.techpack.TechPackPage;
 import com.grupobeta.styleportal.app.styleportal.workflow.worktask.WorkTaskPage;
 import com.grupobeta.styleportal.domain.StylePolyPm;
 import com.grupobeta.wicket.RemoteImage;
@@ -71,10 +73,29 @@ public class StyleDetailsInformationPage extends StylePortalBasePage<StylePolyPm
 		divDetails.add(new Label("silhouette", Model.of(getSelectedObject().getSilhouetteName())));
 		
 		
-		String urlSpec = "http://gbsrvt11.grupobeta.com/ReportServer?%2FGBReports%2FPOLY-PM%2FSpecsReport&Season="+getSelectedObject().getSeasonName()+"&Style="+getSelectedObject().getStyleNumber()+"&rs%3AParameterLanguage=en-US";
-		
+		/*String urlSpec = "http://gbsrvt11.grupobeta.com/ReportServer?%2FGBReports%2FPOLY-PM%2FSpecsReport&Season="+getSelectedObject().getSeasonName()+"&Style="+getSelectedObject().getStyleNumber()+"&rs%3AParameterLanguage=en-US";
+		divSections.add(new ExternalLink("urlSpec", urlSpec));*/
+		 
 		divSections = new WebMarkupContainer("divSections");
-		divSections.add(new ExternalLink("urlSpec", urlSpec));
+		
+		divSections.add(new Link<Void>("urlSpec") {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				setResponsePage(new SpecPage(getSelectedObject()));
+			}
+			
+			 @Override
+	            protected void onComponentTag(ComponentTag tag)
+	            {
+	                super.onComponentTag(tag);
+	                tag.put("target", "_blank"); 
+	            }
+			
+		});
+		
+		
 		
 		divSections.add(new Link<Void>("bomsPages") {
 			private static final long serialVersionUID = 1L;
@@ -103,6 +124,33 @@ public class StyleDetailsInformationPage extends StylePortalBasePage<StylePolyPm
 			public void onClick() {
 				setResponsePage(new WorkTaskPage(getSelectedObject()));
 			}
+		});
+		
+		divSections.add(new Link<Void>("techPack") {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				setResponsePage(new TechPackPage(getSelectedObject()));
+			}
+			
+			 @Override
+	            protected void onComponentTag(ComponentTag tag)
+	            {
+	                super.onComponentTag(tag);
+	                tag.put("target", "_blank"); 
+	            }
+			
+		});
+		
+		divSections.add(new Link<Void>("art") {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				setResponsePage(new ArtPage(getSelectedObject()));
+			}
+
 		});
 		
 		

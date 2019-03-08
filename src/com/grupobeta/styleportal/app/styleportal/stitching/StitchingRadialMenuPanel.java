@@ -17,7 +17,7 @@ public class StitchingRadialMenuPanel extends Panel {
 
 			@Override
 			public void onClick() {
-				setResponsePage(StitchingPage.class);
+				setResponsePage(new StitchingPage(style));
 			}
 		});
 		
