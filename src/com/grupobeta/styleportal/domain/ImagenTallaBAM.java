@@ -1,5 +1,7 @@
 package com.grupobeta.styleportal.domain;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,6 +13,8 @@ public class ImagenTallaBAM extends DomainObject {
 	private int imagenTallaId;
 	private String talla;
 	private String posicionamiento;
+	private BigDecimal alto;
+	private BigDecimal ancho;
 	
 	@Id
 	@Column(name="ImagenTallaID")
@@ -37,7 +41,21 @@ public class ImagenTallaBAM extends DomainObject {
 		this.posicionamiento = posicionamiento;
 	}
 	
+	@Column(name="ALTO", precision=14)
+	public BigDecimal getAlto() {
+		return alto;
+	}
+	public void setAlto(BigDecimal alto) {
+		this.alto = alto;
+	}
 	
+	@Column(name="ANCHO", precision=14)
+	public BigDecimal getAncho() {
+		return ancho;
+	}
+	public void setAncho(BigDecimal ancho) {
+		this.ancho = ancho;
+	}
 	
 	
 }

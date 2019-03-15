@@ -23,7 +23,8 @@ public class ColorBamDaoImpl extends AbstractHibernateDaoImpl<ColorBam, Integer>
 		String sql = "SELECT  " + 
 				"    ROW_NUMBER() OVER(ORDER BY act.COD_COLOR_TELA) ColorID " + 
 				"    ,act.COD_COLOR_TELA ColorCode " + 
-				"   ,act.DESCRIPCION	ColorName " + 
+				"   ,act.DESCRIPCION	ColorName " +
+				" , rc.COLOR_CLIENTE CustomerColorCode " +
 				"FROM REG_COMPOSICION rc " + 
 				"INNER JOIN AUX_COLORES_TELA act " + 
 				"    ON act.COD_COLOR_TELA = rc.COD_COLOR_TELA " + 

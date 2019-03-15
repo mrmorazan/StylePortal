@@ -10,10 +10,13 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.DynamicImageResource;
 import org.apache.wicket.request.resource.IResource;
+import org.apache.wicket.request.resource.IResource.Attributes;
 
 import com.grupobeta.styleportal.component.ImageLink;
+import com.grupobeta.styleportal.component.ImagenImage;
 import com.grupobeta.styleportal.domain.ColorBam;
 import com.grupobeta.styleportal.domain.ImagenBam;
 import com.grupobeta.styleportal.domain.ImagenTallaBAM;
@@ -44,7 +47,17 @@ public class ArtImageBAMDetailPage extends ArtBasePage<ImagenBam> {
 		divImagen = new WebMarkupContainer("divImagen");
 		divImagen.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
 		
-		Link<Void> link = new ImageLink("view", getSelectedObject());
+		PageParameters parametrosModal = new PageParameters();
+		parametrosModal.add("id", imagenBam.getImagenBamID());
+		parametrosModal.add("thumbnail", false);
+		parametrosModal.add("wicket:antiCache", System.currentTimeMillis());
+		
+		/*PageParameters parametrosDetalle = new PageParameters();
+		parametrosModal.add("id", imagenBam.getImagenBamID());
+		parametrosModal.add("thumbnail", true);
+		parametrosModal.add("wicket:antiCache", System.currentTimeMillis());*/
+		
+		Link<Void> link = new ImageLink("view", getSelectedObject(), parametrosModal);
 		link.add(new NonCachingImage("imagenBam") {
 			private static final long serialVersionUID = 1L;
 			
@@ -55,56 +68,19 @@ public class ArtImageBAMDetailPage extends ArtBasePage<ImagenBam> {
 
 					@Override
 					protected byte[] getImageData(Attributes attributes) {
-						return getSelectedObject().getThumbnail();
+						return imagenBam.getThumbnail();
 					}
 				};
 			}
+			
 		});
 		divImagen.add(link);
 		
-		divImagen.add(new Label("ubicacion", Model.of(getSelectedObject().getUbicacion())));
-		divImagen.add(new Label("printMode", Model.of(getSelectedObject().getPrintMode())));
-		divImagen.add(new Label("alto", Model.of(getSelectedObject().getAlto())));
-		divImagen.add(new Label("ancho", Model.of(getSelectedObject().getAncho())));
-		divImagen.add(new Label("instructions", Model.of(getSelectedObject().getInstructions())));
+		this.add(new Label("ubicacion", Model.of(getSelectedObject().getUbicacion())));
+		this.add(new Label("printMode", Model.of(getSelectedObject().getPrintMode())));
+		this.add(new Label("instructions", Model.of(getSelectedObject().getInstructions())));
 		
 		this.add(divImagen);
-		
-		divTallas = new WebMarkupContainer("divTallas");
-		divTallas.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
-		
-		PageablePropertyListView<ImagenTallaBAM> tableTallas = new PageablePropertyListView<ImagenTallaBAM>("tableTallas") {
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			protected List<ImagenTallaBAM> loadItems() {
-				return getTallas();
-			}
-
-			@Override
-			protected void populateItem(Item<ImagenTallaBAM> item) {
-				String valor = item.getModelObject().getPosicionamiento();
-				String valFinal= "";
-				try {
-					valFinal = valor.split(" ")[0];
-				} catch (Exception e) {
-					valFinal = "";
-				}
-				
-				String posicionamiento = valFinal;
-				
-				
-				item.add(new Label("talla"));
-				item.add(new Label("posicionamiento", posicionamiento));
-			}
-			
-		};
-		
-		tableTallas.setRowsPerPage(10);
-		divTallas.add(tableTallas);
-
-		divTallas.add(new PagingNavigator("navigator", tableTallas));
-		this.add(divTallas);
 		
 		divColores = new WebMarkupContainer("divColores");
 		divColores.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
@@ -121,7 +97,7 @@ public class ArtImageBAMDetailPage extends ArtBasePage<ImagenBam> {
 			protected void populateItem(Item<ColorBam> item) {
 				item.add(new Label("colorCode"));
 				item.add(new Label("colorName"));
-				
+				item.add(new Label("customerColorCode"));
 				
 			}
 		};
@@ -131,6 +107,7 @@ public class ArtImageBAMDetailPage extends ArtBasePage<ImagenBam> {
 		
 		divColores.add(new PagingNavigator("navigator", tableColores));
 		this.add(divColores);
+		
 		
 		divTecnicas = new WebMarkupContainer("divTecnicas");
 		divTecnicas.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
@@ -155,6 +132,33 @@ public class ArtImageBAMDetailPage extends ArtBasePage<ImagenBam> {
 		
 		divTecnicas.add(new PagingNavigator("navigator", tableTecnicas));
 		this.add(divTecnicas);
+		
+		divTallas = new WebMarkupContainer("divTallas");
+		divTallas.setOutputMarkupId(true).setOutputMarkupPlaceholderTag(true);
+		
+		PageablePropertyListView<ImagenTallaBAM> tableTallas = new PageablePropertyListView<ImagenTallaBAM>("tableTallas") {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected List<ImagenTallaBAM> loadItems() {
+				return getTallas();
+			}
+
+			@Override
+			protected void populateItem(Item<ImagenTallaBAM> item) {
+				item.add(new Label("talla"));
+				item.add(new Label("alto"));
+				item.add(new Label("ancho"));
+			}
+			
+		};
+		
+		tableTallas.setRowsPerPage(10);
+		divTallas.add(tableTallas);
+		
+		divTallas.add(new PagingNavigator("navigator", tableTallas));
+		this.add(divTallas);
+		
 		
 		
 	}

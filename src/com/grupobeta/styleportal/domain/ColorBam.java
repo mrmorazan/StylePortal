@@ -11,6 +11,7 @@ public class ColorBam extends DomainObject {
 	private int colorID;
 	private String colorCode;
 	private String colorName;
+	private String customerColorCode;
 	
 	@Id
 	@Column(name="ColorID")
@@ -36,6 +37,16 @@ public class ColorBam extends DomainObject {
 	public void setColorName(String colorName) {
 		this.colorName = colorName;
 	}
+	
+	@Column(name="CustomerColorCode")
+	public String getCustomerColorCode() {
+		return customerColorCode;
+	}
+	public void setCustomerColorCode(String customerColorCode) {
+		this.customerColorCode = customerColorCode;
+	}
+	
+	
 	
 	
 

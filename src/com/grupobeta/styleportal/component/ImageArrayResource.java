@@ -1,5 +1,6 @@
 package com.grupobeta.styleportal.component;
 
+import org.apache.wicket.request.http.WebResponse.CacheScope;
 import org.apache.wicket.request.resource.ByteArrayResource;
 import org.apache.wicket.util.time.Duration;
 
@@ -14,8 +15,9 @@ public class ImageArrayResource extends ByteArrayResource {
 	
 	@Override
 	protected void configureResponse(ResourceResponse response, Attributes attributes) {
-		super.configureResponse(response, attributes);
 		response.setCacheDuration(Duration.NONE);
+		  response.setCacheScope(CacheScope.PRIVATE);
+		super.configureResponse(response, attributes);
 	}
 
 }

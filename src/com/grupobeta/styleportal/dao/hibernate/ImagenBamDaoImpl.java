@@ -24,8 +24,6 @@ public class ImagenBamDaoImpl extends AbstractHibernateDaoImpl<ImagenBam, Long> 
 				"    ri.ID_IMAGEN ImagenID " + 
 				"   ,au.DESCRIPCION Ubicacion " + 
 				"   ,apm.DESCRIPCION PrintMode " + 
-				"   ,rit.ALTO " + 
-				"   ,rit.ANCHO " + 
 				"   ,ri.IMAGEN " + 
 				"   ,rit.POSICIONAMIENTO Instructions " + 
 				"FROM REG_ARTES ra " + 

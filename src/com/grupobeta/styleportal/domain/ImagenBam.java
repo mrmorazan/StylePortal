@@ -21,8 +21,6 @@ public class ImagenBam extends DomainObject {
 	private long imagenBamID;
 	private String ubicacion;
 	private String printMode;
-	private BigDecimal alto;
-	private BigDecimal ancho;
 	private byte[] imagen = new byte[0];
 	private byte[] thumbnail = new byte[0];
 	private String instructions;
@@ -52,21 +50,7 @@ public class ImagenBam extends DomainObject {
 		this.printMode = printMode;
 	}
 	
-	@Column(name="ALTO", precision=14)
-	public BigDecimal getAlto() {
-		return alto;
-	}
-	public void setAlto(BigDecimal alto) {
-		this.alto = alto;
-	}
 	
-	@Column(name="ANCHO", precision=14)
-	public BigDecimal getAncho() {
-		return ancho;
-	}
-	public void setAncho(BigDecimal ancho) {
-		this.ancho = ancho;
-	}
 	
 	@Column(name="IMAGEN")
 	public byte[] getImagen() {

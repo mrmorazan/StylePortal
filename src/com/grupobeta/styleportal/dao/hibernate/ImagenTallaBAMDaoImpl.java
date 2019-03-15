@@ -24,6 +24,8 @@ public class ImagenTallaBAMDaoImpl extends AbstractHibernateDaoImpl<ImagenTallaB
 				"    ROW_NUMBER() OVER(ORDER BY(at.COD_TALLA)) ImagenTallaID " + 
 				"    ,at.DESCRIPCION Talla " + 
 				"   ,rit.POSICIONAMIENTO Posicionamiento " + 
+				" 	,rit.ANCHO " + 
+				" 	,rit.ALTO  "+
 				"FROM REG_ARTES ra " + 
 				"INNER JOIN REG_IMAGENES ri " + 
 				"    ON ra.ID_ARTE = ri.ID_ARTE " + 
